@@ -4,10 +4,14 @@ import autoprefixer from "autoprefixer";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
 
 export default {
     mode: "development",
-    entry: "./src/scripts/main.tsx",
+    entry: {
+        "main": "./src/scripts/main.tsx",
+        "redirect": "./src/scripts/redirect.tsx",
+    },
     output: {
         filename: "assets/js/[name]-[hash].js",
         path: path.resolve(__dirname, "docs"),
@@ -81,6 +85,7 @@ export default {
     resolve: {
         extensions: [
             ".js",
+            ".ts",
             ".tsx",
             ".scss",
         ],
@@ -99,6 +104,19 @@ export default {
             filename: "index.html",
             template: "./src/template.html",
             minify: false,
+            chunks: [
+                "vendor",
+                "main",
+            ],
+        }),
+        new HtmlWebpackPlugin({
+            filename: "404.html",
+            minify: false,
+            chunks: [
+                "redirect",
+            ],
+            title: "Fowler Hooley Wedding",
+            inject: "head",
         }),
         new ProvidePlugin({
             $: "jquery",
@@ -107,6 +125,12 @@ export default {
         new MiniCssExtractPlugin({
             filename: "assets/css/[name]-[hash].css",
         }),
-        new CleanWebpackPlugin("./docs")
+        new CleanWebpackPlugin("./docs"),
+        new CopyWebpackPlugin([
+            {
+                from:'./src/CNAME',
+                to:'.'
+            }
+        ])
     ],
 } as Configuration;

@@ -154,15 +154,39 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/scripts/components/router.tsx":
-/*!*******************************************!*\
-  !*** ./src/scripts/components/router.tsx ***!
-  \*******************************************/
+/***/ "./src/scripts/components/home-page.tsx":
+/*!**********************************************!*\
+  !*** ./src/scripts/components/home-page.tsx ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __extends = (this && this.__extends) || (function () {\r\n    var extendStatics = function (d, b) {\r\n        extendStatics = Object.setPrototypeOf ||\r\n            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\r\n            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\r\n        return extendStatics(d, b);\r\n    };\r\n    return function (d, b) {\r\n        extendStatics(d, b);\r\n        function __() { this.constructor = d; }\r\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\r\n    };\r\n})();\r\nvar __importStar = (this && this.__importStar) || function (mod) {\r\n    if (mod && mod.__esModule) return mod;\r\n    var result = {};\r\n    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];\r\n    result[\"default\"] = mod;\r\n    return result;\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar react_1 = __importStar(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nvar Router = (function (_super) {\r\n    __extends(Router, _super);\r\n    function Router() {\r\n        return _super !== null && _super.apply(this, arguments) || this;\r\n    }\r\n    Router.prototype.render = function () {\r\n        return (react_1.default.createElement(\"div\", null,\r\n            react_1.default.createElement(\"h1\", null, \"Wedding Coming Soon\")));\r\n    };\r\n    return Router;\r\n}(react_1.Component));\r\nexports.Router = Router;\r\n\n\n//# sourceURL=webpack:///./src/scripts/components/router.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nfunction HomePage() {\r\n    return (react_1.default.createElement(\"span\", null, \"Home page\"));\r\n}\r\nexports.HomePage = HomePage;\r\n\n\n//# sourceURL=webpack:///./src/scripts/components/home-page.tsx?");
+
+/***/ }),
+
+/***/ "./src/scripts/components/root.tsx":
+/*!*****************************************!*\
+  !*** ./src/scripts/components/root.tsx ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nvar react_router_dom_1 = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/es/index.js\");\r\nvar home_page_1 = __webpack_require__(/*! ./home-page */ \"./src/scripts/components/home-page.tsx\");\r\nvar rsvp_page_1 = __webpack_require__(/*! ./rsvp-page */ \"./src/scripts/components/rsvp-page.tsx\");\r\nfunction Root() {\r\n    return (react_1.default.createElement(react_router_dom_1.BrowserRouter, null,\r\n        react_1.default.createElement(\"div\", null,\r\n            react_1.default.createElement(\"h1\", null, \"Wedding Coming Soon\"),\r\n            react_1.default.createElement(react_router_dom_1.Switch, null,\r\n                react_1.default.createElement(react_router_dom_1.Route, { path: \"/\", exact: true, component: home_page_1.HomePage }),\r\n                react_1.default.createElement(react_router_dom_1.Route, { path: \"/rsvp/\", component: rsvp_page_1.RsvpPage })))));\r\n}\r\nexports.Root = Root;\r\n\n\n//# sourceURL=webpack:///./src/scripts/components/root.tsx?");
+
+/***/ }),
+
+/***/ "./src/scripts/components/rsvp-page.tsx":
+/*!**********************************************!*\
+  !*** ./src/scripts/components/rsvp-page.tsx ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nfunction RsvpPage() {\r\n    return (react_1.default.createElement(\"span\", null, \"RSVP page\"));\r\n}\r\nexports.RsvpPage = RsvpPage;\r\n\n\n//# sourceURL=webpack:///./src/scripts/components/rsvp-page.tsx?");
 
 /***/ }),
 
@@ -174,7 +198,7 @@ eval("\r\nvar __extends = (this && this.__extends) || (function () {\r\n    var 
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__webpack_require__(/*! ../styles/main */ \"./src/styles/main.scss\");\r\n__webpack_require__(/*! es6-shim */ \"./node_modules/es6-shim/es6-shim.js\");\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\"));\r\nvar router_1 = __webpack_require__(/*! ./components/router */ \"./src/scripts/components/router.tsx\");\r\nreact_dom_1.default.render(react_1.default.createElement(router_1.Router, null), document.getElementById(\"app\"));\r\n\n\n//# sourceURL=webpack:///./src/scripts/main.tsx?");
+eval("\r\nvar __importDefault = (this && this.__importDefault) || function (mod) {\r\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\r\n};\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n__webpack_require__(/*! ../styles/main */ \"./src/styles/main.scss\");\r\n__webpack_require__(/*! es6-shim */ \"./node_modules/es6-shim/es6-shim.js\");\r\nvar react_1 = __importDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\r\nvar react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\"));\r\nvar root_1 = __webpack_require__(/*! ./components/root */ \"./src/scripts/components/root.tsx\");\r\nreact_dom_1.default.render(react_1.default.createElement(root_1.Root, null), document.getElementById(\"root\"));\r\n\n\n//# sourceURL=webpack:///./src/scripts/main.tsx?");
 
 /***/ }),
 

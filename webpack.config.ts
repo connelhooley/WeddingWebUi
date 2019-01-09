@@ -111,13 +111,22 @@ export default {
         }),
         new HtmlWebpackPlugin({
             filename: "404.html",
+            template: "./src/template.html",
             minify: false,
             chunks: [
-                "redirect",
+                "vendor",
+                "main",
             ],
-            title: "Fowler Hooley Wedding",
-            inject: "head",
         }),
+        // new HtmlWebpackPlugin({
+        //     filename: "404.html",
+        //     minify: false,
+        //     chunks: [
+        //         "redirect",
+        //     ],
+        //     title: "Fowler Hooley Wedding",
+        //     inject: "head",
+        // }),
         new ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

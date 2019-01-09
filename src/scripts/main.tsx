@@ -8,5 +8,4 @@ import { Root } from "./components/root";
 
 ReactDom.render(
     <Root />,
-    document.getElementById("root")
-);
+    document.getElementById("root"));

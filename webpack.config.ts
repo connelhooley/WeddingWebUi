@@ -8,10 +8,7 @@ import CopyWebpackPlugin from "copy-webpack-plugin";
 
 export default {
     mode: "development",
-    entry: {
-        "main": "./src/scripts/main.tsx",
-        "redirect": "./src/scripts/redirect.tsx",
-    },
+    entry: "./src/scripts/main.tsx",
     output: {
         filename: "assets/js/[name]-[hash].js",
         path: path.resolve(__dirname, "docs"),
@@ -118,15 +115,6 @@ export default {
                 "main",
             ],
         }),
-        // new HtmlWebpackPlugin({
-        //     filename: "404.html",
-        //     minify: false,
-        //     chunks: [
-        //         "redirect",
-        //     ],
-        //     title: "Fowler Hooley Wedding",
-        //     inject: "head",
-        // }),
         new ProvidePlugin({
             $: "jquery",
             jQuery: "jquery"

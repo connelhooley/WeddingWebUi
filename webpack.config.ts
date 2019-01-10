@@ -12,7 +12,7 @@ export default {
     output: {
         filename: "assets/js/[name]-[hash].js",
         path: path.resolve(__dirname, "docs"),
-        publicPath: '/',
+        publicPath: "/",
     },
     module: {
         rules: [
@@ -95,25 +95,18 @@ export default {
     devServer: {
         port: 9000,
         publicPath: "/",
+        historyApiFallback: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/template.html",
             minify: false,
-            chunks: [
-                "vendor",
-                "main",
-            ],
         }),
         new HtmlWebpackPlugin({
             filename: "404.html",
             template: "./src/template.html",
             minify: false,
-            chunks: [
-                "vendor",
-                "main",
-            ],
         }),
         new ProvidePlugin({
             $: "jquery",
@@ -125,8 +118,8 @@ export default {
         new CleanWebpackPlugin("./docs"),
         new CopyWebpackPlugin([
             {
-                from:'./src/CNAME',
-                to:'.'
+                from:"./src/CNAME",
+                to:"."
             }
         ])
     ],

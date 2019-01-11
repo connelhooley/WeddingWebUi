@@ -1,4 +1,5 @@
-import "../styles/main"
+import "../styles/main";
+
 import "es6-shim";
 
 import React from "react";

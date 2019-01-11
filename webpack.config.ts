@@ -1,25 +1,30 @@
+import autoprefixer from "autoprefixer";
+import CleanWebpackPlugin from "clean-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import path from "path";
 import { Configuration, ProvidePlugin } from "webpack";
-import autoprefixer from "autoprefixer";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import CleanWebpackPlugin from "clean-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import CopyWebpackPlugin from "copy-webpack-plugin";
 
 export default {
-    mode: "development",
-    entry: "./src/scripts/main.tsx",
-    output: {
-        filename: "assets/js/[name]-[hash].js",
-        path: path.resolve(__dirname, "docs"),
+    devServer: {
+        historyApiFallback: true,
+        port: 9000,
         publicPath: "/",
     },
+    entry: "./src/scripts/main.tsx",
+    mode: "development",
     module: {
         rules: [
             {
+                enforce: "pre",
+                test: /\.ts?x$/,
+                use: "tslint-loader",
+            },
+            {
+                exclude: /node_modules/,
                 test: /\.tsx?$/,
                 use: "ts-loader",
-                exclude: /node_modules/,
             },
             {
                 test: /\.s?css$/,
@@ -34,37 +39,37 @@ export default {
                     {
                         loader: "postcss-loader",
                         options: {
-                            sourceMap: true,
                             plugins: () => [
                                 autoprefixer({
                                     browsers: [
-                                        "last 2 versions"
+                                        "last 2 versions",
                                     ],
-                                })
+                                }),
                             ],
+                            sourceMap: true,
                         },
                     },
                     {
-                        loader: "sass-loader", 
-                        options: { 
-                            sourceMap: true 
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
                         },
-                    }
+                    },
                 ],
             },
             {
-                test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
                 loader: "file-loader",
                 options: {
                     name: "./assets/fonts/[name]-[hash].[ext]",
                 },
+                test: /\.(otf|eot|svg|ttf|woff|woff2)$/,
             },
             {
-                test: /\.(gif|png)$/,
                 loader: "file-loader",
                 options: {
                     name: "./assets/images/[name]-[hash].[ext]",
                 },
+                test: /\.(gif|png)$/,
             },
         ],
     },
@@ -72,13 +77,44 @@ export default {
         splitChunks: {
             cacheGroups: {
                 js: {
-                    test: /node_modules/,
+                    chunks: "all",
                     name: "vendor",
-                    chunks: "all"
-                }
-            }
+                    test: /node_modules/,
+                },
+            },
         },
     },
+    output: {
+        filename: "assets/js/[name]-[hash].js",
+        path: path.resolve(__dirname, "docs"),
+        publicPath: "/",
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            minify: false,
+            template: "./src/template.html",
+        }),
+        new HtmlWebpackPlugin({
+            filename: "404.html",
+            minify: false,
+            template: "./src/template.html",
+        }),
+        new ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "assets/css/[name]-[hash].css",
+        }),
+        new CleanWebpackPlugin("./docs"),
+        new CopyWebpackPlugin([
+            {
+                from: "./src/CNAME",
+                to: ".",
+            },
+        ]),
+    ],
     resolve: {
         extensions: [
             ".js",
@@ -89,38 +125,7 @@ export default {
     },
     watchOptions: {
         aggregateTimeout: 300,
-        poll: 1000,
         ignored: /node_modules/,
+        poll: 1000,
     },
-    devServer: {
-        port: 9000,
-        publicPath: "/",
-        historyApiFallback: true,
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            template: "./src/template.html",
-            minify: false,
-        }),
-        new HtmlWebpackPlugin({
-            filename: "404.html",
-            template: "./src/template.html",
-            minify: false,
-        }),
-        new ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
-        new MiniCssExtractPlugin({
-            filename: "assets/css/[name]-[hash].css",
-        }),
-        new CleanWebpackPlugin("./docs"),
-        new CopyWebpackPlugin([
-            {
-                from:"./src/CNAME",
-                to:"."
-            }
-        ])
-    ],
 } as Configuration;

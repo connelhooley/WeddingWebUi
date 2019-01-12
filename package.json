@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-brands-svg-icons": "^5.6.3",
+    "@fortawesome/free-regular-svg-icons": "^5.6.3",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "@types/autoprefixer": "^9.1.1",
     "@types/clean-webpack-plugin": "^0.1.2",
     "@types/copy-webpack-plugin": "^4.4.2",
@@ -22,11 +27,13 @@
     "@types/react-router-dom": "^4.3.1",
     "@types/webpack": "^4.4.22",
     "@types/webpack-dev-server": "^3.1.1",
+    "@types/yup": "^0.26.4",
     "autoprefixer": "^9.4.4",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
     "css-loader": "^2.1.0",
     "es6-shim": "^0.35.4",
+    "formik": "^1.4.2",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
@@ -43,6 +50,7 @@
     "typescript": "^3.2.2",
     "webpack": "^4.28.3",
     "webpack-cli": "3.1.2",
-    "webpack-dev-server": "^3.1.14"
+    "webpack-dev-server": "^3.1.14",
+    "yup": "^0.26.7"
   }
 }

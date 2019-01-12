@@ -7,5 +7,10 @@
         "**/CVS": false,
         "**/node_modules": true,
         "**/package-lock.json": true
-    }
+    },
+    "cSpell.words": [
+        "Formik",
+        "fontawesome",
+        "fortawesome"
+    ]
 }

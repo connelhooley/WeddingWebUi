@@ -16,12 +16,8 @@ export async function validateInviteId(inviteId: string): Promise<boolean> {
     const {serviceBaseUrl, serviceValidateInviteIdToken} = getConfig();
     const url = `${serviceBaseUrl}/api/invite-id?inviteId=${inviteId}&code=${serviceValidateInviteIdToken}`;
     const method = "GET";
-    const res = await fetch(new Request(url, { method }));
-    if (res.ok) {
-        return await res.json();
-    } else {
-        throw new Error("Service call failed");
-    }
+    const res = await  fetch(new Request(url, { method }));
+    return res.ok && JSON.parse(await res.json());
 }
 
 export async function sendRsvp(rsvp: Rsvp): Promise<void>  {
@@ -29,7 +25,7 @@ export async function sendRsvp(rsvp: Rsvp): Promise<void>  {
     const url = `${serviceBaseUrl}/api/invite?code=${serviceSendRsvpToken}`;
     const method = "PUT";
     const body = JSON.stringify(rsvp);
-    const res = await fetch(new Request(url, { method, body}));
+    const res = await fetch(new Request(url, { method, body }));
     if (!res.ok) {
         throw new Error("Service call failed");
     }

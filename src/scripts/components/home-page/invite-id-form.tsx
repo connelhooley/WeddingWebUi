@@ -30,10 +30,17 @@ class InviteIdFormRoute extends Component<RouteComponentProps<{}>> {
     }
 
     private renderForm(
-        { errors, handleChange, isSubmitting }: FormikProps<InviteIdFormModel>,
+        {
+            errors,
+            touched,
+            handleSubmit,
+            handleChange,
+            isSubmitting,
+            isValidating,
+        }: FormikProps<InviteIdFormModel>,
     ): JSX.Element {
         return (
-            <div id="invite-id-form">
+            <form onSubmit={handleSubmit} >
                 <input
                     name="inviteId"
                     type="text"
@@ -41,12 +48,12 @@ class InviteIdFormRoute extends Component<RouteComponentProps<{}>> {
                     required
                     onChange={handleChange} />
                 <span className="form-error">
-                    {errors.inviteId}
+                    {touched.inviteId ? errors.inviteId : ""}
                 </span>
-                <button type="submit">
-                    {isSubmitting ? "Loading" : "Submit"}
-                </button>>
-            </div>
+                <button type="submit" disabled={isSubmitting || isValidating}>
+                    {isSubmitting || isValidating ? "Loading" : "Submit"}
+                </button>
+            </form>
         );
     }
 

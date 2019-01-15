@@ -35,23 +35,48 @@ export function MealFields(
         starter === "ChildSetMenu" ||
         main === "ChildSetMenu" ||
         dessert === "ChildSetMenu";
+    const onChildMenu = () => {
+        onStarterChange("ChildSetMenu");
+        onMainChange("ChildSetMenu");
+        onDessertChange("ChildSetMenu");
+    };
     return (
         <>
-            <StarterField
-                age={age}
-                inviteType={inviteType}
-                value={starter}
-                onChange={onStarterChange} />
-            <MainField
-                age={age}
-                inviteType={inviteType}
-                value={main}
-                onChange={onMainChange} />
-            <DessertField
-                age={age}
-                inviteType={inviteType}
-                value={dessert}
-                onChange={onDessertChange} />
+            <div>
+                <div>
+                    Adult Menu
+                </div>
+                <div hidden={childMenuIsSelected}>
+                    <StarterField
+                        value={starter}
+                        onChange={onStarterChange} />
+                    <MainField
+                        value={main}
+                        onChange={onMainChange} />
+                    <DessertField
+                        value={dessert}
+                        onChange={onDessertChange} />
+                </div>
+            </div>
+            <div onClick={onChildMenu}>
+                <div>
+                    Child's Menu
+                </div>
+                <div>
+                    <div>
+                        Starter:<br />
+                        Cheesey Bread
+                    </div>
+                    <div>
+                        Main course:
+                        <br />Chicken goujons served potato wedges
+                    </div>
+                    <div>
+                        Dessert:
+                        <br />Homemade ice cream with wafer
+                    </div>
+                </div>
+            </div>
         </>
     );
 }

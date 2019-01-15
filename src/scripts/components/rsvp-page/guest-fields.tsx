@@ -9,42 +9,43 @@ import { SongRequestField } from "./song-request-field";
 
 export interface GuestFieldsProps {
     guest: Guest;
+    onChange: (guest: Guest) => void;
 }
 
-export function GuestFields({ guest }: GuestFieldsProps): JSX.Element {
+export function GuestFields({ guest, onChange }: GuestFieldsProps): JSX.Element {
     return (
-        <fieldset className="guest">
+        <fieldset key={guest.firstName} className="guest">
             <legend>{guest.firstName}</legend>
             <AttendingField
                 inviteType={guest.inviteType}
                 value={guest.attending}
-                onChange={null} />
+                onChange={(attending) => onChange({ ...guest, attending})} />
             <MealFields
                 age={guest.age}
                 inviteType={guest.inviteType}
                 starter={guest.starter}
                 main={guest.main}
                 dessert={guest.dessert}
-                onStarterChange={null}
-                onMainChange={null}
-                onDessertChange={null} />
+                onStarterChange={(starter) => onChange({ ...guest, starter})}
+                onMainChange={(main) => onChange({ ...guest, main})}
+                onDessertChange={(dessert) => onChange({ ...guest, dessert})} />
             <DrinksPreferenceFields
                 age={guest.age}
                 inviteType={guest.inviteType}
                 drinkPreferenceRed={guest.drinkPreferenceRed}
                 drinkPreferenceWhite={guest.drinkPreferenceWhite}
                 drinkPreferenceRose={guest.drinkPreferenceRose}
-                onDrinkPreferenceRedChange={null}
-                onDrinkPreferenceWhiteChange={null}
-                onDrinkPreferenceRoseChange={null} />
+                onDrinkPreferenceRedChange={(drinkPreferenceRed) => onChange({ ...guest, drinkPreferenceRed})}
+                onDrinkPreferenceWhiteChange={(drinkPreferenceWhite) => onChange({ ...guest, drinkPreferenceWhite})}
+                onDrinkPreferenceRoseChange={(drinkPreferenceRose) => onChange({ ...guest, drinkPreferenceRose})} />
             <DietaryRequirementField
                 age={guest.age}
                 value={guest.dietaryRequirements}
-                onChange={null} />
+                onChange={(dietaryRequirements) => onChange({ ...guest, dietaryRequirements})} /> />
             <SongRequestField
                 age={guest.age}
                 value={guest.songRequest}
-                onChange={null} />
+                onChange={(songRequest) => onChange({ ...guest, songRequest})} />
         </fieldset>
     );
 }

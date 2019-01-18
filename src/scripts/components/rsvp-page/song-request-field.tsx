@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Age } from "../../utilities/service";
+import { AgeDto } from "../../utilities/service";
 
 export interface SongRequestFieldProps {
-    age: Age;
+    age: AgeDto;
     value: string;
     onChange: (value: string) => void;
 }

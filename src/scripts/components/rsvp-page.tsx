@@ -1,49 +1,54 @@
 import React, { Component } from "react";
-import { RouteComponentProps } from "react-router";
+import { Redirect, RouteComponentProps } from "react-router";
 
 import { getInviteId } from "../utilities/local-storage";
-import { getInvite, Invite } from "../utilities/service";
 import { RsvpForm } from "./rsvp-page/rsvp-form";
 
-interface RsvpPageState {
-    invite: Invite;
-    loading: boolean;
+interface RsvpFormState {
+    inviteId: string;
+    saved: boolean;
 }
 
-export class RsvpPage extends Component<RouteComponentProps<{}>, RsvpPageState> {
+export class RsvpPage extends Component<RouteComponentProps<{}>, RsvpFormState> {
     constructor(props: RouteComponentProps<{}>) {
         super(props);
         this.onSaved = this.onSaved.bind(this);
+        this.state = {
+            inviteId: "",
+            saved: false,
+        };
     }
 
-    public async componentDidMount(): Promise<void> {
-        this.setState({ loading: true });
+    public componentDidMount(): void {
         const inviteId = getInviteId();
         if (!inviteId) {
-            this.props.history.push("/");
-            return;
+            this.setState({
+                inviteId: "",
+                saved: true,
+            });
+        } else {
+            this.setState({
+                inviteId,
+                saved: false,
+            });
         }
-        const invite = await getInvite(inviteId);
-        this.setState({
-            invite,
-            loading: false,
-        });
     }
 
     public render(): JSX.Element {
-        if (this.state.loading) {
+        if (this.state.saved) {
             return (
-                <span>Loading</span>
+                <Redirect to="/" />
             );
         } else {
             return (
-                <RsvpForm invite={this.state.invite} onSaved={this.onSaved} />
+                <RsvpForm inviteId={this.state.inviteId}  onSaved={this.onSaved} />
             );
-
         }
     }
 
     private onSaved(): void {
-        this.props.history.push("/");
+        this.setState({
+            saved: true,
+        });
     }
 }

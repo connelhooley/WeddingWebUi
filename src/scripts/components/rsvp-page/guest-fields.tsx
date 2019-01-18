@@ -1,51 +1,78 @@
 import React from "react";
 
-import { Guest } from "../../utilities/service";
-import { AttendingField } from "./attending-field";
+import { AttendingField, AttendingFormModel } from "./attending-field";
+import { DessertFormModel } from "./dessert-field";
 import { DietaryRequirementField } from "./dietary-requirement-field";
 import { DrinksPreferenceFields } from "./drinks-preference";
+import { MainFormModel } from "./main-field";
 import { MealFields } from "./meal-fields";
 import { SongRequestField } from "./song-request-field";
+import { StarterFormModel } from "./starter-field";
 
 export interface GuestFieldsProps {
-    guest: Guest;
-    onChange: (guest: Guest) => void;
+    guest: GuestRsvpFormModel;
+    onChange: (guest: GuestRsvpFormModel) => void;
 }
 
-export function GuestFields({ guest, onChange }: GuestFieldsProps): JSX.Element {
+export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.Element {
     return (
-        <fieldset key={guest.firstName} className="guest">
-            <legend>{guest.firstName}</legend>
+        <fieldset className="guest">
+            <legend>{values.firstName}</legend>
             <AttendingField
-                inviteType={guest.inviteType}
-                value={guest.attending}
-                onChange={(attending) => onChange({ ...guest, attending})} />
+                inviteType={values.inviteType}
+                value={values.attending}
+                onChange={(attending) => onChange({ ...values, attending})} />
             <MealFields
-                age={guest.age}
-                inviteType={guest.inviteType}
-                starter={guest.starter}
-                main={guest.main}
-                dessert={guest.dessert}
-                onStarterChange={(starter) => onChange({ ...guest, starter})}
-                onMainChange={(main) => onChange({ ...guest, main})}
-                onDessertChange={(dessert) => onChange({ ...guest, dessert})} />
+                age={values.age}
+                inviteType={values.inviteType}
+                isChildSetMenu={values.isChildSetMenu}
+                starter={values.starter}
+                main={values.main}
+                dessert={values.dessert}
+                onStarterChange={(starter) => onChange({ ...values, starter})}
+                onMainChange={(main) => onChange({ ...values, main})}
+                onDessertChange={(dessert) => onChange({ ...values, dessert})}
+                onIsChildSetMenuChange={(isChildSetMenu) => onChange({ ...values, isChildSetMenu})} />
             <DrinksPreferenceFields
-                age={guest.age}
-                inviteType={guest.inviteType}
-                drinkPreferenceRed={guest.drinkPreferenceRed}
-                drinkPreferenceWhite={guest.drinkPreferenceWhite}
-                drinkPreferenceRose={guest.drinkPreferenceRose}
-                onDrinkPreferenceRedChange={(drinkPreferenceRed) => onChange({ ...guest, drinkPreferenceRed})}
-                onDrinkPreferenceWhiteChange={(drinkPreferenceWhite) => onChange({ ...guest, drinkPreferenceWhite})}
-                onDrinkPreferenceRoseChange={(drinkPreferenceRose) => onChange({ ...guest, drinkPreferenceRose})} />
+                age={values.age}
+                inviteType={values.inviteType}
+                drinkPreferenceRed={values.drinkPreferenceRed}
+                drinkPreferenceWhite={values.drinkPreferenceWhite}
+                drinkPreferenceRose={values.drinkPreferenceRose}
+                onDrinkPreferenceRedChange={(drinkPreferenceRed) => onChange({ ...values, drinkPreferenceRed})}
+                onDrinkPreferenceWhiteChange={(drinkPreferenceWhite) => onChange({ ...values, drinkPreferenceWhite})}
+                onDrinkPreferenceRoseChange={(drinkPreferenceRose) => onChange({ ...values, drinkPreferenceRose})} />
             <DietaryRequirementField
-                age={guest.age}
-                value={guest.dietaryRequirements}
-                onChange={(dietaryRequirements) => onChange({ ...guest, dietaryRequirements})} /> />
+                age={values.age}
+                value={values.dietaryRequirements}
+                onChange={(dietaryRequirements) => onChange({ ...values, dietaryRequirements})} /> />
             <SongRequestField
-                age={guest.age}
-                value={guest.songRequest}
-                onChange={(songRequest) => onChange({ ...guest, songRequest})} />
+                age={values.age}
+                value={values.songRequest}
+                onChange={(songRequest) => onChange({ ...values, songRequest})} />
         </fieldset>
     );
 }
+
+export interface GuestRsvpFormModel {
+    inviteId: string;
+    firstName: string;
+    lastName: string;
+    inviteType: InviteTypeFormModel;
+    attending: AttendingFormModel;
+    eligibleForRoom: boolean;
+    age: AgeFormModel;
+    isChildSetMenu: boolean;
+    starter: StarterFormModel;
+    main: MainFormModel;
+    dessert: DessertFormModel;
+    dietaryRequirements: string;
+    drinkPreferenceRed?: boolean;
+    drinkPreferenceWhite?: boolean;
+    drinkPreferenceRose?: boolean;
+    songRequest: string;
+}
+
+export type InviteTypeFormModel = "Day" | "Evening";
+
+export type AgeFormModel = "Infant" | "Child" | "YoungAdult" | "Adult";

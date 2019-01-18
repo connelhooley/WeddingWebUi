@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Age, InviteType } from "../../utilities/service";
+import { AgeDto, InviteTypeDto } from "../../utilities/service";
 
 export interface DrinksPreferenceFieldsProps {
-    age: Age;
-    inviteType: InviteType;
+    age: AgeDto;
+    inviteType: InviteTypeDto;
     drinkPreferenceRed?: boolean;
     drinkPreferenceWhite?: boolean;
     drinkPreferenceRose?: boolean;

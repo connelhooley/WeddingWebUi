@@ -12,5 +12,6 @@
         "Formik",
         "fontawesome",
         "fortawesome"
-    ]
+    ],
+    "window.autoDetectHighContrast": false
 }

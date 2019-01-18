@@ -1,6 +1,6 @@
 import { getConfig } from "./config";
 
-export async function getInvite(inviteId: string): Promise<Invite> {
+export async function getInvite(inviteId: string): Promise<InviteDto> {
     const {serviceBaseUrl, serviceGetInviteToken} = getConfig();
     const url = `${serviceBaseUrl}/api/invite?inviteId=${inviteId}&code=${serviceGetInviteToken}`;
     const method = "GET";
@@ -20,7 +20,7 @@ export async function validateInviteId(inviteId: string): Promise<boolean> {
     return res.ok && JSON.parse(await res.json());
 }
 
-export async function sendRsvp(rsvp: Rsvp): Promise<void>  {
+export async function sendRsvp(rsvp: RsvpDto): Promise<void>  {
     const {serviceBaseUrl, serviceSendRsvpToken} = getConfig();
     const url = `${serviceBaseUrl}/api/invite?code=${serviceSendRsvpToken}`;
     const method = "PUT";
@@ -31,21 +31,21 @@ export async function sendRsvp(rsvp: Rsvp): Promise<void>  {
     }
 }
 
-export interface Invite {
-    guests: Guest[];
+export interface InviteDto {
+    guests: InviteGuestDto[];
 }
 
-export interface Guest {
+export interface InviteGuestDto {
     inviteId: string;
     firstName: string;
     lastName: string;
-    inviteType: InviteType;
-    attending: Attending;
+    inviteType: InviteTypeDto;
+    attending: AttendingDto;
     eligibleForRoom: boolean;
-    age: Age;
-    starter: Starter;
-    main: Main;
-    dessert: Dessert;
+    age: AgeDto;
+    starter: StarterDto;
+    main: MainDto;
+    dessert: DessertDto;
     dietaryRequirements: string;
     drinkPreferenceRed?: boolean;
     drinkPreferenceWhite?: boolean;
@@ -53,17 +53,17 @@ export interface Guest {
     songRequest: string;
 }
 
-export interface Rsvp {
-    rsvps: RsvpGuest[];
+export interface RsvpDto {
+    rsvps: RsvpGuestDto[];
 }
 
-export interface RsvpGuest {
+export interface RsvpGuestDto {
     inviteId: string;
     firstName: string;
-    attending: Attending;
-    starter: Starter;
-    main: Main;
-    dessert: Dessert;
+    attending: AttendingDto;
+    starter: StarterDto;
+    main: MainDto;
+    dessert: DessertDto;
     dietaryRequirements: string;
     drinkPreferenceRed?: boolean;
     drinkPreferenceWhite?: boolean;
@@ -71,14 +71,14 @@ export interface RsvpGuest {
     songRequest: string;
 }
 
-export type InviteType = "Day" | "Evening";
+export type InviteTypeDto = "Day" | "Evening";
 
-export type Attending = "NotAttending" | "Day" | "Evening";
+export type AttendingDto = "NotAttending" | "Day" | "Evening";
 
-export type Age = "Infant" | "Child" | "YoungAdult" | "Adult";
+export type AgeDto = "Infant" | "Child" | "YoungAdult" | "Adult";
 
-export type Starter = "PrawnCocktail" | "Asparagus" | "ChildSetMenu";
+export type StarterDto = "PrawnCocktail" | "Asparagus" | "ChildSetMenu";
 
-export type Main = "CodAndChips" | "HuntersChicken" | "ChildSetMenu";
+export type MainDto = "CodAndChips" | "HuntersChicken" | "ChildSetMenu";
 
-export type Dessert = "EtonMess" | "ChocolateBrownie" | "ChildSetMenu";
+export type DessertDto = "EtonMess" | "ChocolateBrownie" | "ChildSetMenu";

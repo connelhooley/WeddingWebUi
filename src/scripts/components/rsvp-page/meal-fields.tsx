@@ -1,52 +1,47 @@
 import React from "react";
 
-import { Age, Dessert, InviteType, Main, Starter } from "../../utilities/service";
-import { DessertField } from "./dessert-field";
-import { MainField } from "./main-field";
-import { StarterField } from "./starter-field";
+import { DessertField, DessertFormModel } from "./dessert-field";
+import { AgeFormModel, InviteTypeFormModel } from "./guest-fields";
+import { MainField, MainFormModel } from "./main-field";
+import { StarterField, StarterFormModel } from "./starter-field";
 
 export interface MealFieldsProps {
-    age: Age;
-    inviteType: InviteType;
-    starter: Starter;
-    main: Main;
-    dessert: Dessert;
-    onStarterChange: (value: Starter) => void;
-    onMainChange: (value?: Main) => void;
-    onDessertChange: (value?: Dessert) => void;
+    age: AgeFormModel;
+    inviteType: InviteTypeFormModel;
+    isChildSetMenu: boolean;
+    starter: StarterFormModel;
+    main: MainFormModel;
+    dessert: DessertFormModel;
+    onStarterChange: (value: StarterFormModel) => void;
+    onMainChange: (value?: MainFormModel) => void;
+    onDessertChange: (value?: DessertFormModel) => void;
+    onIsChildSetMenuChange: (value?: boolean) => void;
 }
 
 export function MealFields(
     {
         age,
         inviteType,
+        isChildSetMenu,
         starter,
         main,
         dessert,
         onStarterChange,
         onMainChange,
         onDessertChange,
+        onIsChildSetMenuChange,
     }: MealFieldsProps,
 ): JSX.Element {
     if (inviteType === "Evening" || age === "Infant") {
         return <></>;
     }
-    const childMenuIsSelected =
-        starter === "ChildSetMenu" ||
-        main === "ChildSetMenu" ||
-        dessert === "ChildSetMenu";
-    const onChildMenu = () => {
-        onStarterChange("ChildSetMenu");
-        onMainChange("ChildSetMenu");
-        onDessertChange("ChildSetMenu");
-    };
     return (
         <>
-            <div>
+            <div onClick={() => onIsChildSetMenuChange(false)}>
                 <div>
-                    Adult Menu
+                    Adult Menu {isChildSetMenu ? "" : "(Selected)"}
                 </div>
-                <div hidden={childMenuIsSelected}>
+                <div>
                     <StarterField
                         value={starter}
                         onChange={onStarterChange} />
@@ -58,9 +53,9 @@ export function MealFields(
                         onChange={onDessertChange} />
                 </div>
             </div>
-            <div onClick={onChildMenu}>
+            <div onClick={() => onIsChildSetMenuChange(true)}>
                 <div>
-                    Child's Menu
+                    Child's Menu {isChildSetMenu ? "(Selected)" : ""}
                 </div>
                 <div>
                     <div>

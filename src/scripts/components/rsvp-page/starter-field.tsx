@@ -1,25 +1,27 @@
 import React from "react";
 
-import { Starter } from "../../utilities/service";
+import { StarterDto } from "../../utilities/service";
 import { Radio, RadioButtons } from "./radios";
 
 export interface StarterFieldProps {
-    value: Starter;
-    onChange: (value: Starter) => void;
+    value: StarterDto;
+    onChange: (value: StarterDto) => void;
 }
 
 export function StarterField({ value, onChange }: StarterFieldProps): JSX.Element {
-    const radios: Array<Radio<Starter>> = [
+    const radios: Array<Radio<StarterDto>> = [
         { label: "Prawn cocktail", value: "PrawnCocktail" },
         { label: "Asparagus", value: "Asparagus" },
     ];
     return (
         <label>
             Starter
-            <RadioButtons<Starter>
+            <RadioButtons<StarterDto>
                 value={value}
                 radios={radios}
                 onChange={onChange} />
         </label>
     );
 }
+
+export type StarterFormModel = "PrawnCocktail" | "Asparagus";

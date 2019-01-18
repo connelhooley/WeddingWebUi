@@ -1,94 +1,87 @@
-import { Formik, FormikActions, FormikProps } from "formik";
-import React, { Component } from "react";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { object, ObjectSchema, string } from "yup";
+import React, { ChangeEvent, Component } from "react";
 
-import { storeInviteId } from "../../utilities/local-storage";
+import { getInviteId, storeInviteId } from "../../utilities/local-storage";
 import { validateInviteId } from "../../utilities/service";
 
-interface InviteIdFormModel {
-    inviteId: string;
+interface InviteIdFormProps {
+    onSaved: () => void;
 }
 
-class InviteIdFormRoute extends Component<RouteComponentProps<{}>> {
-    constructor(props: RouteComponentProps<{}>) {
+interface InviteIdFormState {
+    inviteId: string;
+    isError: boolean;
+    loading: boolean;
+}
+
+export class InviteIdForm extends Component<InviteIdFormProps, InviteIdFormState> {
+    constructor(props: InviteIdFormProps) {
         super(props);
-        this.renderForm = this.renderForm.bind(this);
-        this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.getFormInitialValues = this.getFormInitialValues.bind(this);
-        this.getFormValidationSchema = this.getFormValidationSchema.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = {
+            isError: false,
+            loading: false,
+            inviteId: "",
+        };
+    }
+
+    public componentDidMount(): void {
+        const inviteId = getInviteId();
+        this.setState({
+            inviteId,
+        });
     }
 
     public render(): JSX.Element {
         return (
-            <Formik<InviteIdFormModel>
-                render={this.renderForm}
-                onSubmit={this.onFormSubmit}
-                initialValues={this.getFormInitialValues()}
-                validationSchema={this.getFormValidationSchema()} />
-        );
-    }
-
-    private renderForm(
-        {
-            errors,
-            touched,
-            handleSubmit,
-            handleChange,
-            isSubmitting,
-            isValidating,
-        }: FormikProps<InviteIdFormModel>,
-    ): JSX.Element {
-        return (
-            <form onSubmit={handleSubmit} >
-                <input
-                    name="inviteId"
-                    type="text"
-                    placeholder="Enter your RSVP code here..."
-                    required
-                    onChange={handleChange} />
-                <span className="form-error">
-                    {touched.inviteId ? errors.inviteId : ""}
+            <form onSubmit={this.handleSubmit} >
+                <p>
+                    Send RSVP
+                </p>
+                <label>
+                    RSVP Code
+                    <input
+                        value={this.state.inviteId}
+                        name="inviteId"
+                        type="text"
+                        required
+                        onChange={this.handleChange} />
+                </label>
+                <span hidden={!this.state.isError} className="form-error">
+                    Sorry, we couldn't find that RSVP code. Please try again.
                 </span>
-                <button type="submit" disabled={isSubmitting || isValidating}>
-                    {isSubmitting || isValidating ? "Loading" : "Submit"}
+                <button type="submit" disabled={this.state.loading}>
+                    {this.state.loading ? "Loading" : "Continue"}
                 </button>
             </form>
         );
     }
 
-    private async onFormSubmit(
-        { inviteId }: InviteIdFormModel,
-        { setSubmitting }: FormikActions<InviteIdFormModel>,
-    ): Promise<void> {
-        storeInviteId(inviteId);
-        setSubmitting(false);
-        this.props.history.push("/rsvp");
-    }
-
-    private getFormInitialValues(): InviteIdFormModel {
-        return {
-            inviteId: "",
-        };
-    }
-
-    private getFormValidationSchema(): ObjectSchema<InviteIdFormModel> {
-        return object<InviteIdFormModel>().shape({
-            inviteId: string()
-                .required("Please enter your RSVP code")
-                .min(6, "Please enter a RSVP code that contains 6 characters")
-                .max(6, "Please enter a RSVP code that contains 6 characters")
-                .matches(/^[A-z0-9]{6}$/, "Please enter a valid RSVP code")
-                .test(
-                    "is-valid-invite-id",
-                    "Sorry, we couldn't find that RSVP code. Please ensure you typed it in correctly",
-                    validateInviteId),
+    public handleChange(event: ChangeEvent<HTMLInputElement>): void {
+        this.setState({
+            inviteId: event.target.value,
         });
     }
+
+    public async handleSubmit(): Promise<void> {
+        this.setState({
+            loading: true,
+            isError: false,
+        });
+        const rsvpCode = this.state.inviteId.replace(/\s/, "").toLocaleUpperCase();
+        const isValid = await validateInviteId(rsvpCode);
+        if (isValid) {
+            storeInviteId(rsvpCode);
+            this.props.onSaved();
+            this.setState({
+                isError: false,
+                loading: false,
+            });
+        } else {
+            this.setState({
+                isError: true,
+                loading: false,
+            });
+        }
+    }
 }
-
-const InviteIdForm = withRouter(InviteIdFormRoute);
-
-export {
-    InviteIdForm,
-};

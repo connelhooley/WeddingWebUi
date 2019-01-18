@@ -1,19 +1,19 @@
 import React from "react";
 
-import { Attending, InviteType } from "../../utilities/service";
+import { InviteTypeFormModel } from "./guest-fields";
 import { Radio, RadioButtons } from "./radios";
 
 export interface GuestFieldsProps {
-    inviteType: InviteType;
-    value: Attending;
-    onChange: (value: Attending) => void;
+    inviteType: InviteTypeFormModel;
+    value: AttendingFormModel;
+    onChange: (value: AttendingFormModel) => void;
 }
 
 export function AttendingField({ inviteType, value, onChange }: GuestFieldsProps): JSX.Element {
     const message = inviteType === "Day"
         ? "You are invited to join us on our special day"
         : "You are invited to join us on our special day at the evening reception";
-    const radios: Array<Radio<Attending>> = inviteType === "Day"
+    const radios: Array<Radio<AttendingFormModel>> = inviteType === "Day"
         ?
             [
                 { label: "Attending day & evening", value: "Day" },
@@ -28,10 +28,12 @@ export function AttendingField({ inviteType, value, onChange }: GuestFieldsProps
     return (
         <label>
             {message}
-            <RadioButtons<Attending>
+            <RadioButtons<AttendingFormModel>
                 radios={radios}
                 value={value}
                 onChange={onChange} />
         </label>
     );
 }
+
+export type AttendingFormModel = "NotAttending" | "Day" | "Evening";

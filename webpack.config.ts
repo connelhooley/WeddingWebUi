@@ -121,6 +121,7 @@ export default {
             ".ts",
             ".tsx",
             ".scss",
+            ".css",
         ],
     },
     watchOptions: {

@@ -5,23 +5,25 @@ export interface Radio<T extends string> {
     value: T;
 }
 
-export interface RadioButtonsProps<T extends string> {
+export interface RadiosProps<T extends string> {
+    mainLabel: string;
     value?: T;
     radios: Array<Radio<T>>;
     onChange: (value: T) => void;
 }
-export class RadioButtons<T extends string> extends Component<RadioButtonsProps<T>> {
-    constructor(props: RadioButtonsProps<T>) {
+export class Radios<T extends string> extends Component<RadiosProps<T>> {
+    constructor(props: RadiosProps<T>) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
     }
 
     public render(): JSX.Element {
         return (
-            <>
+            <div className="guest-field">
+                <label>{this.props.mainLabel}</label>
                 {this.props.radios.map(({ label, value }) => {
                     return (
-                        <label>
+                        <label key={value}>
                             <input
                                 type="radio"
                                 value={value}
@@ -31,7 +33,7 @@ export class RadioButtons<T extends string> extends Component<RadioButtonsProps<
                         </label>
                     );
                 })}
-            </>
+            </div>
         );
     }
 

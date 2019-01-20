@@ -1,56 +1,64 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { getInviteId } from "../../utilities/local-storage";
 import { mapDto, mapForm } from "../../utilities/mapper";
 import { getInvite, sendRsvp } from "../../utilities/service";
 import { GuestFields, GuestRsvpFormModel } from "./guest-fields";
-
-export interface RsvpFormProps {
-    inviteId: string;
-    onSaved: () => void;
-}
 
 export interface RsvpFormState {
     rsvp: RsvpFormModel;
     loading: boolean;
     saving: boolean;
+    saved: boolean;
 }
 
-export class RsvpForm extends Component<RsvpFormProps, RsvpFormState> {
-    constructor(props: RsvpFormProps) {
+export class RsvpForm extends Component<{}, RsvpFormState> {
+    constructor(props: {}) {
         super(props);
         this.handleGuestChange = this.handleGuestChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.setState({
+        this.state = {
             rsvp: null,
             loading: true,
             saving: false,
-        });
+            saved: false,
+        };
     }
 
     public async componentDidMount(): Promise<void> {
-        const inviteDto = await getInvite(this.props.inviteId);
+        const inviteId = getInviteId();
+        const inviteDto = await getInvite(inviteId);
         const rsvp = mapDto(inviteDto);
         this.setState({
             rsvp,
             loading: false,
+            saving: false,
+            saved: false,
         });
     }
 
     public render(): JSX.Element {
-        if (this.state.loading) {
+        if (this.state.saved) {
+            return (
+                <Redirect to="/" />
+            );
+        } else if (this.state.loading) {
             return (
                 <p>Loading...</p>
             );
         } else {
             return (
-                <form onSubmit={this.handleSubmit}>
+                <form className="rsvp-form" onSubmit={this.handleSubmit}>
                     {this.state.rsvp.guests.map((guest) =>
                         <GuestFields
                             key={guest.firstName}
                             guest={guest}
-                            onChange={this.handleGuestChange} />)};
-                    <button type="submit" disabled={this.state.saving}>
-                        {this.state.saving ? "Loading" : "Submit"}
-                    </button>
+                            onChange={this.handleGuestChange} />)}
+                    <div className="guest-field">
+                        <button type="submit" disabled={this.state.saving}>
+                            {this.state.saving ? "Loading" : "Submit"}
+                        </button>
+                    </div>
                 </form>
             );
         }
@@ -76,8 +84,8 @@ export class RsvpForm extends Component<RsvpFormProps, RsvpFormState> {
         await sendRsvp(rsvpDto);
         this.setState({
             saving: false,
+            saved: true,
         });
-        this.props.onSaved();
     }
 }
 

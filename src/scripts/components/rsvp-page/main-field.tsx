@@ -1,7 +1,7 @@
 import React from "react";
 
 import { MainDto } from "../../utilities/service";
-import { Radio, RadioButtons } from "./radios";
+import { Radio, Radios } from "../shared/radios";
 
 export interface MainFieldProps {
     value: MainDto;
@@ -14,13 +14,11 @@ export function MainField({ value, onChange }: MainFieldProps): JSX.Element {
         { label: "Hunter's chicken", value: "HuntersChicken" },
     ];
     return (
-        <label>
-            Main
-            <RadioButtons<MainDto>
+            <Radios<MainDto>
+                mainLabel="Main"
                 value={value}
                 radios={radios}
                 onChange={onChange} />
-        </label>
     );
 }
 

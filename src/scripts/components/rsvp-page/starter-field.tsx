@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StarterDto } from "../../utilities/service";
-import { Radio, RadioButtons } from "./radios";
+import { Radio, Radios } from "../shared/radios";
 
 export interface StarterFieldProps {
     value: StarterDto;
@@ -14,13 +14,11 @@ export function StarterField({ value, onChange }: StarterFieldProps): JSX.Elemen
         { label: "Asparagus", value: "Asparagus" },
     ];
     return (
-        <label>
-            Starter
-            <RadioButtons<StarterDto>
+            <Radios<StarterDto>
+                mainLabel="Starter"
                 value={value}
                 radios={radios}
                 onChange={onChange} />
-        </label>
     );
 }
 

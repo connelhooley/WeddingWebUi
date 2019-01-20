@@ -16,41 +16,48 @@ export interface GuestFieldsProps {
 
 export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.Element {
     return (
-        <fieldset className="guest">
-            <legend>{values.firstName}</legend>
-            <AttendingField
-                inviteType={values.inviteType}
-                value={values.attending}
-                onChange={(attending) => onChange({ ...values, attending})} />
-            <MealFields
-                age={values.age}
-                inviteType={values.inviteType}
-                isChildSetMenu={values.isChildSetMenu}
-                starter={values.starter}
-                main={values.main}
-                dessert={values.dessert}
-                onStarterChange={(starter) => onChange({ ...values, starter})}
-                onMainChange={(main) => onChange({ ...values, main})}
-                onDessertChange={(dessert) => onChange({ ...values, dessert})}
-                onIsChildSetMenuChange={(isChildSetMenu) => onChange({ ...values, isChildSetMenu})} />
-            <DrinksPreferenceFields
-                age={values.age}
-                inviteType={values.inviteType}
-                drinkPreferenceRed={values.drinkPreferenceRed}
-                drinkPreferenceWhite={values.drinkPreferenceWhite}
-                drinkPreferenceRose={values.drinkPreferenceRose}
-                onDrinkPreferenceRedChange={(drinkPreferenceRed) => onChange({ ...values, drinkPreferenceRed})}
-                onDrinkPreferenceWhiteChange={(drinkPreferenceWhite) => onChange({ ...values, drinkPreferenceWhite})}
-                onDrinkPreferenceRoseChange={(drinkPreferenceRose) => onChange({ ...values, drinkPreferenceRose})} />
-            <DietaryRequirementField
-                age={values.age}
-                value={values.dietaryRequirements}
-                onChange={(dietaryRequirements) => onChange({ ...values, dietaryRequirements})} /> />
-            <SongRequestField
-                age={values.age}
-                value={values.songRequest}
-                onChange={(songRequest) => onChange({ ...values, songRequest})} />
-        </fieldset>
+        <div className="guest">
+            <header className="guest-header">
+                {values.firstName}
+            </header>
+            <div className="guest-fields">
+                <AttendingField
+                    inviteType={values.inviteType}
+                    value={values.attending}
+                    onChange={(attending) => onChange({ ...values, attending})} />
+                <MealFields
+                    age={values.age}
+                    inviteType={values.inviteType}
+                    isChildSetMenu={values.isChildSetMenu}
+                    starter={values.starter}
+                    main={values.main}
+                    dessert={values.dessert}
+                    onStarterChange={(starter) => onChange({ ...values, starter})}
+                    onMainChange={(main) => onChange({ ...values, main})}
+                    onDessertChange={(dessert) => onChange({ ...values, dessert})}
+                    onIsChildSetMenuChange={(isChildSetMenu) => onChange({ ...values, isChildSetMenu})} />
+                <DrinksPreferenceFields
+                    age={values.age}
+                    inviteType={values.inviteType}
+                    drinkPreferenceRed={values.drinkPreferenceRed}
+                    drinkPreferenceWhite={values.drinkPreferenceWhite}
+                    drinkPreferenceRose={values.drinkPreferenceRose}
+                    onDrinkPreferenceRedChange={(drinkPreferenceRed) =>
+                        onChange({ ...values, drinkPreferenceRed})}
+                    onDrinkPreferenceWhiteChange={(drinkPreferenceWhite) =>
+                        onChange({ ...values, drinkPreferenceWhite})}
+                    onDrinkPreferenceRoseChange={(drinkPreferenceRose) =>
+                        onChange({ ...values, drinkPreferenceRose})} />
+                <DietaryRequirementField
+                    age={values.age}
+                    value={values.dietaryRequirements}
+                    onChange={(dietaryRequirements) => onChange({ ...values, dietaryRequirements})} />
+                <SongRequestField
+                    age={values.age}
+                    value={values.songRequest}
+                    onChange={(songRequest) => onChange({ ...values, songRequest})} />
+            </div>
+        </div>
     );
 }
 

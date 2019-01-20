@@ -36,12 +36,14 @@ export function MealFields(
         return <></>;
     }
     return (
-        <>
-            <div onClick={() => onIsChildSetMenuChange(false)}>
-                <div>
+        <div className="guest-meal">
+            <div
+                className={"guest-meal-menu" + (isChildSetMenu ? "" : " guest-meal-menu-selected")}
+                onClick={() => onIsChildSetMenuChange(false)}>
+                <header className="guest-meal-menu-header">
                     Adult Menu {isChildSetMenu ? "" : "(Selected)"}
-                </div>
-                <div>
+                </header>
+                <div className="guest-meal-menu-fields">
                     <StarterField
                         value={starter}
                         onChange={onStarterChange} />
@@ -53,25 +55,39 @@ export function MealFields(
                         onChange={onDessertChange} />
                 </div>
             </div>
-            <div onClick={() => onIsChildSetMenuChange(true)}>
-                <div>
+            <div
+                className={"guest-meal-menu" + (isChildSetMenu ? " guest-meal-menu-selected" : "")}
+                onClick={() => onIsChildSetMenuChange(true)}>
+                <header className="guest-meal-menu-header">
                     Child's Menu {isChildSetMenu ? "(Selected)" : ""}
-                </div>
-                <div>
-                    <div>
-                        Starter:<br />
-                        Cheesey Bread
+                </header>
+                <div className="guest-meal-menu-fields">
+                    <div className="guest-meal-menu-child-field">
+                        <div className="guest-meal-menu-child-field-label">
+                            Starter
+                        </div>
+                        <div className="guest-meal-menu-child-field-value">
+                            Cheesey bread
+                        </div>
                     </div>
-                    <div>
-                        Main course:
-                        <br />Chicken goujons served potato wedges
+                    <div className="guest-meal-menu-child-field">
+                        <div className="guest-meal-menu-child-field-label">
+                            Main
+                        </div>
+                        <div className="guest-meal-menu-child-field-value">
+                            Chicken goujons served potato wedges
+                        </div>
                     </div>
-                    <div>
-                        Dessert:
-                        <br />Homemade ice cream with wafer
+                    <div className="guest-meal-menu-child-field">
+                        <div className="guest-meal-menu-child-field-label">
+                            Dessert
+                        </div>
+                        <div className="guest-meal-menu-child-field-value">
+                            Homemade ice cream with wafer
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }

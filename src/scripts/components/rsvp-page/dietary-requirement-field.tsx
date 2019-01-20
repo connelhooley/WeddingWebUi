@@ -15,11 +15,15 @@ export function DietaryRequirementField(
         return <></>;
     }
     return (
-        <label>
-            Dietary requirements
-            <input
-                value={value}
-                onChange={(e) => onChange(e.target.value)} />
-        </label>
+        <div className="guest-field">
+            <label>
+                Dietary requirements
+                <input
+                    type="text"
+                    maxLength={280}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)} />
+            </label>
+        </div>
     );
 }

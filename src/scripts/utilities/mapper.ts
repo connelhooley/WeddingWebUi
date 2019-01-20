@@ -12,13 +12,13 @@ export function mapDto(invite: InviteDto): RsvpFormModel  {
         g.dessert === "ChildSetMenu";
 
     const mapStarter = (g: InviteGuestDto): StarterFormModel =>
-        g.starter === "ChildSetMenu" ? null : g.starter;
+        g.starter === "ChildSetMenu" ? undefined : g.starter;
 
     const mapMain = (g: InviteGuestDto): MainFormModel =>
-        g.main === "ChildSetMenu" ? null : g.main;
+        g.main === "ChildSetMenu" ? undefined : g.main;
 
     const mapDessert = (g: InviteGuestDto): DessertFormModel =>
-        g.dessert === "ChildSetMenu" ? null : g.dessert;
+        g.dessert === "ChildSetMenu" ? undefined : g.dessert;
 
     return {
         guests: invite.guests.map((g) => ({

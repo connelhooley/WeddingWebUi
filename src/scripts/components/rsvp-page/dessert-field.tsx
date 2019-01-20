@@ -1,7 +1,7 @@
 import React from "react";
 
 import { DessertDto } from "../../utilities/service";
-import { Radio, RadioButtons } from "./radios";
+import { Radio, Radios } from "../shared/radios";
 
 export interface DessertFieldProps {
     value: DessertDto;
@@ -14,13 +14,11 @@ export function DessertField({ value, onChange }: DessertFieldProps): JSX.Elemen
         { label: "Chocolate brownie", value: "ChocolateBrownie" },
     ];
     return (
-        <label>
-            Dessert
-            <RadioButtons<DessertDto>
-                radios={radios}
-                value={value}
-                onChange={onChange} />
-        </label>
+        <Radios<DessertDto>
+            mainLabel="Dessert"
+            radios={radios}
+            value={value}
+            onChange={onChange} />
     );
 }
 

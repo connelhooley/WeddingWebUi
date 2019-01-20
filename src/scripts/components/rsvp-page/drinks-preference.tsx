@@ -29,29 +29,29 @@ export function DrinksPreferenceFields(
         return <></>;
     }
     return (
-        <>
+        <div className="guest-field">
             <label>Drinks preference</label>
-            <label>
-                Red wine
+            <label className="checkbox-label">
                 <input
                     type="checkbox"
                     checked={drinkPreferenceRed}
                     onChange={(e) => onDrinkPreferenceRedChange(e.target.checked)} />
+                Red wine
             </label>
-            <label>
-                White wine
+            <label className="checkbox-label">
                 <input
                     type="checkbox"
                     checked={drinkPreferenceWhite}
                     onChange={(e) => onDrinkPreferenceWhiteChange(e.target.checked)} />
+                White wine
             </label>
-            <label>
-                Rose wine
+            <label className="checkbox-label">
                 <input
                     type="checkbox"
                     checked={drinkPreferenceRose}
                     onChange={(e) => onDrinkPreferenceRoseChange(e.target.checked)} />
+                Rose wine
             </label>
-        </>
+        </div>
     );
 }

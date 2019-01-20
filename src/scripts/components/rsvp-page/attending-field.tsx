@@ -1,7 +1,7 @@
 import React from "react";
 
+import { Radio, Radios } from "../shared/radios";
 import { InviteTypeFormModel } from "./guest-fields";
-import { Radio, RadioButtons } from "./radios";
 
 export interface GuestFieldsProps {
     inviteType: InviteTypeFormModel;
@@ -26,13 +26,11 @@ export function AttendingField({ inviteType, value, onChange }: GuestFieldsProps
                 { label: "Not attending", value: "NotAttending" },
             ];
     return (
-        <label>
-            {message}
-            <RadioButtons<AttendingFormModel>
-                radios={radios}
-                value={value}
-                onChange={onChange} />
-        </label>
+        <Radios<AttendingFormModel>
+            mainLabel={message}
+            radios={radios}
+            value={value}
+            onChange={onChange} />
     );
 }
 

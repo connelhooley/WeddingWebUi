@@ -13,11 +13,15 @@ export function SongRequestField({ age, value, onChange }: SongRequestFieldProps
         return <></>;
     }
     return (
-        <label>
-            Song Request
-            <input
-                value={value}
-                onChange={(e) => onChange(e.target.value)} />
-        </label>
+        <div className="guest-field">
+            <label>
+                Song request
+                <input
+                    type="text"
+                    maxLength={280}
+                    value={value}
+                    onChange={(e) => onChange(e.target.value)} />
+            </label>
+        </div>
     );
 }

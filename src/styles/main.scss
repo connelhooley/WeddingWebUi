@@ -15,6 +15,7 @@
             font-size: 1.6rem;
             padding: .5rem 1rem;
             background-color: #7c7c7c;
+            color: #FFFFFF;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
         }
@@ -26,14 +27,17 @@
             .guest-field {
                 display: block;
                 margin-bottom: 1rem;
+                input,
+                .guest-field-check-boxes,
+                .guest-field-radios {
+                    margin-top: .5rem;
+                }
                 label {
                     display: block;
                     margin-bottom: .25rem;
                 }
                 input {
                     display: block;
-                    margin-top: .25rem;
-                    margin-bottom: .25rem;
                     box-sizing: border-box;
                     width: 420px;
                 }
@@ -56,18 +60,39 @@
                 margin-bottom: 1rem;
                 .guest-meal-menu {
                     flex: 50%;
-                    border-top: #000000 solid 1px;
-                    border-bottom: #000000 solid 1px;
+                    background-color: #f2f2f2;
                     &:first-child {
-                        border-left: #000000 solid 1px;
-                        border-right: #000000 solid .5px;
+                        margin-right: .5rem;
                     }
                     &:last-child {
-                        border-left: #000000 solid .5px;
-                        border-right: #000000 solid 1px;
+                        margin-left: .5rem;
+                    }
+                    &.guest-meal-menu-selected {
+                        .guest-meal-menu-header {
+                            font-weight: 700;
+                        }
+                        .guest-meal-menu-selected-indicator {
+                            visibility: visible;
+                        }
                     }
                     .guest-meal-menu-header {
                         padding: .5rem 1rem;
+                        background-color: white;
+                        text-align: center;
+                    }
+                    .guest-meal-menu-selected-indicator {
+                        visibility: hidden;
+                        color: white;
+                        text-align: center;
+                        .chevron {
+                            margin-left: auto;
+                            margin-right: auto;
+                            width: 0;
+                            height: 0;
+                            border-left: 30px solid transparent;
+                            border-right: 30px solid transparent;
+                            border-top: 12px solid white;
+                        }
                     }
                     .guest-meal-menu-fields {
                         padding: .5rem 1rem;

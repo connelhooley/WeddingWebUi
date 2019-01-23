@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import { DessertField, DessertFormModel } from "./dessert-field";
@@ -41,8 +42,11 @@ export function MealFields(
                 className={"guest-meal-menu" + (isChildSetMenu ? "" : " guest-meal-menu-selected")}
                 onClick={() => onIsChildSetMenuChange(false)}>
                 <header className="guest-meal-menu-header">
-                    Adult Menu {isChildSetMenu ? "" : "(Selected)"}
+                    Adult Menu
                 </header>
+                <div className="guest-meal-menu-selected-indicator">
+                    <div className="chevron"></div>
+                </div>
                 <div className="guest-meal-menu-fields">
                     <StarterField
                         value={starter}
@@ -59,8 +63,11 @@ export function MealFields(
                 className={"guest-meal-menu" + (isChildSetMenu ? " guest-meal-menu-selected" : "")}
                 onClick={() => onIsChildSetMenuChange(true)}>
                 <header className="guest-meal-menu-header">
-                    Child's Menu {isChildSetMenu ? "(Selected)" : ""}
+                    Child's Menu
                 </header>
+                <div className="guest-meal-menu-selected-indicator">
+                    <div className="chevron"></div>
+                </div>
                 <div className="guest-meal-menu-fields">
                     <div className="guest-meal-menu-child-field">
                         <div className="guest-meal-menu-child-field-label">

@@ -31,27 +31,29 @@ export function DrinksPreferenceFields(
     return (
         <div className="guest-field">
             <label>Drinks preference</label>
-            <label className="checkbox-label">
-                <input
-                    type="checkbox"
-                    checked={drinkPreferenceRed}
-                    onChange={(e) => onDrinkPreferenceRedChange(e.target.checked)} />
-                Red wine
-            </label>
-            <label className="checkbox-label">
-                <input
-                    type="checkbox"
-                    checked={drinkPreferenceWhite}
-                    onChange={(e) => onDrinkPreferenceWhiteChange(e.target.checked)} />
-                White wine
-            </label>
-            <label className="checkbox-label">
-                <input
-                    type="checkbox"
-                    checked={drinkPreferenceRose}
-                    onChange={(e) => onDrinkPreferenceRoseChange(e.target.checked)} />
-                Rose wine
-            </label>
+            <div className="guest-field-check-boxes">
+                <label className="checkbox-label">
+                    <input
+                        type="checkbox"
+                        checked={drinkPreferenceRed}
+                        onChange={(e) => onDrinkPreferenceRedChange(e.target.checked)} />
+                    Red wine
+                </label>
+                <label className="checkbox-label">
+                    <input
+                        type="checkbox"
+                        checked={drinkPreferenceWhite}
+                        onChange={(e) => onDrinkPreferenceWhiteChange(e.target.checked)} />
+                    White wine
+                </label>
+                <label className="checkbox-label">
+                    <input
+                        type="checkbox"
+                        checked={drinkPreferenceRose}
+                        onChange={(e) => onDrinkPreferenceRoseChange(e.target.checked)} />
+                    Rose wine
+                </label>
+            </div>
         </div>
     );
 }

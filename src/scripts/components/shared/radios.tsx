@@ -21,18 +21,20 @@ export class Radios<T extends string> extends Component<RadiosProps<T>> {
         return (
             <div className="guest-field">
                 <label>{this.props.mainLabel}</label>
-                {this.props.radios.map(({ label, value }) => {
-                    return (
-                        <label key={value}>
-                            <input
-                                type="radio"
-                                value={value}
-                                checked={this.props.value === value}
-                                onChange={this.handleChange} />
-                            {label}
-                        </label>
-                    );
-                })}
+                <div className="guest-field-radios">
+                    {this.props.radios.map(({ label, value }) => {
+                        return (
+                            <label key={value}>
+                                <input
+                                    type="radio"
+                                    value={value}
+                                    checked={this.props.value === value}
+                                    onChange={this.handleChange} />
+                                {label}
+                            </label>
+                        );
+                    })}
+                </div>
             </div>
         );
     }

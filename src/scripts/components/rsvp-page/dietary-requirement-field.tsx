@@ -1,17 +1,19 @@
 import React from "react";
 
 import { AgeDto } from "../../utilities/service";
+import { AttendingFormModel } from "./attending-field";
 
 export interface DietaryRequirementFieldProps {
     age: AgeDto;
+    attending: AttendingFormModel;
     value: string;
     onChange: (value: string) => void;
 }
 
 export function DietaryRequirementField(
-    { age, value, onChange }: DietaryRequirementFieldProps,
+    { age, attending, value, onChange }: DietaryRequirementFieldProps,
 ): JSX.Element {
-    if (age === "Infant") {
+    if (attending === "NotAttending" || age === "Infant") {
         return <></>;
     }
     return (

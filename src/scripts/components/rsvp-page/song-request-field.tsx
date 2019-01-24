@@ -1,15 +1,17 @@
 import React from "react";
 
 import { AgeDto } from "../../utilities/service";
+import { AttendingFormModel } from "./attending-field";
 
 export interface SongRequestFieldProps {
     age: AgeDto;
+    attending: AttendingFormModel;
     value: string;
     onChange: (value: string) => void;
 }
 
-export function SongRequestField({ age, value, onChange }: SongRequestFieldProps): JSX.Element {
-    if (age === "Infant") {
+export function SongRequestField({ age, attending, value, onChange }: SongRequestFieldProps): JSX.Element {
+    if (attending === "NotAttending" || age === "Infant") {
         return <></>;
     }
     return (

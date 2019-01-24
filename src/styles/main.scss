@@ -1,7 +1,42 @@
 @import "~normalize.css/normalize";
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+$primary-color: #ffcf58;
+$inactive-color: #dddddd;
+$body-font-family: "Noto Sans", sans-serif;;
+$header-font-family: "Noto Serif SC", serif;
+$alt-font-family: 'Sacramento', cursive;
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    font-family: $body-font-family;
+    padding: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $header-font-family;
+}
+
+#site-header {
+    padding: 2rem 0;
+    h1 {
+        text-align: center;
+        margin: 0;
+    }
+}
+
+.vegetarian {
+    color: #00a83d;
 }
 
 .rsvp-form {
@@ -12,6 +47,8 @@
         margin-bottom: 2rem;
         border-radius: 4px;
         .guest-header {
+            font-family: $header-font-family;
+            text-transform: uppercase;
             font-size: 1.6rem;
             padding: .5rem 1rem;
             background-color: #7c7c7c;
@@ -21,12 +58,12 @@
         }
         .guest-fields {
             padding: .5rem 1rem;
-            background-color: #eaeaea;
+            border: 3px solid #7c7c7c;
             border-bottom-left-radius: 4px;
             border-bottom-right-radius: 4px;
             .guest-field {
                 display: block;
-                margin-bottom: 1rem;
+                margin-bottom: 1.5rem;
                 input,
                 .guest-field-check-boxes,
                 .guest-field-radios {
@@ -39,7 +76,11 @@
                 input {
                     display: block;
                     box-sizing: border-box;
-                    width: 420px;
+                    width: 100%;
+                    outline: none;
+                    &:focus {
+                        border: 1px solid $primary-color;
+                    }
                 }
                 input[type=radio],
                 input[type=checkbox] {
@@ -51,16 +92,31 @@
                 input[type=text] {
                     border-radius: 4px;
                     padding: 0.5rem;
-                    border: none;
+                    border: 1px solid #878787;
+                    &:focus {
+                        border: 1px solid $primary-color;
+                    }
                 }
             }
-            .guest-meal {
+            .hint {
+                color: #8e8e8e;
+            }
+            .guest-meal-menus {
                 display: flex;
                 flex-direction: row;
                 margin-bottom: 1rem;
                 .guest-meal-menu {
                     flex: 50%;
-                    background-color: #f2f2f2;
+                    box-shadow: 0 0 0 1.5px $inactive-color;
+                    &,
+                    input,
+                    label {
+                        cursor: pointer;
+                    }
+                    &,
+                    .guest-meal-menu-header {
+                        transition: all 250ms ease-in-out;
+                    }
                     &:first-child {
                         margin-right: .5rem;
                     }
@@ -68,21 +124,69 @@
                         margin-left: .5rem;
                     }
                     &.guest-meal-menu-selected {
+                        box-shadow: 0 0 0 1.5px $primary-color;
+                        &,
+                        input,
+                        label {
+                            cursor: default;
+                        }
+                        &,
+                        .guest-meal-menu-header
+                        {
+                            transition: none;
+                        }
                         .guest-meal-menu-header {
                             font-weight: 700;
+                            background-color: $primary-color;
+                            svg {
+                                display: initial;
+                            }
+                        }
+                        .guest-meal-menu-fields {
+                            color: #000000;
+                            .hint {
+                                color: #8e8e8e;
+                            }
                         }
                         .guest-meal-menu-selected-indicator {
                             visibility: visible;
                         }
                     }
+                    &.guest-meal-menu-unselected {
+                        .guest-meal-menu-header {
+                            background-color: $inactive-color;
+                            svg {
+                                display: none;
+                            }
+                        }
+                        .guest-meal-menu-selected-indicator {
+                            visibility: hidden;
+                        }
+                        .guest-meal-menu-fields {
+                            &,
+                            .hint,
+                            .vegetarian {
+                                color: $inactive-color;
+                            }
+                        }
+                        &:hover {
+                            box-shadow: 0 0 0 1.5px lighten($primary-color, 20%);
+                            .guest-meal-menu-header {
+                                background-color: lighten($primary-color, 20%);
+                            }
+                        }
+                    }
                     .guest-meal-menu-header {
                         padding: .5rem 1rem;
-                        background-color: white;
+                        border: none;
                         text-align: center;
+                        display: block;
+                        width: 100%;
+                        svg {
+                            color: #FFFFFF;
+                        }
                     }
                     .guest-meal-menu-selected-indicator {
-                        visibility: hidden;
-                        color: white;
                         text-align: center;
                         .chevron {
                             margin-left: auto;
@@ -91,22 +195,35 @@
                             height: 0;
                             border-left: 30px solid transparent;
                             border-right: 30px solid transparent;
-                            border-top: 12px solid white;
+                            border-top: 12px solid $primary-color;
                         }
                     }
                     .guest-meal-menu-fields {
                         padding: .5rem 1rem;
                         .guest-meal-menu-child-field {
                             margin-bottom: 1rem;
-                            .guest-meal-menu-child-field-label {
-                                
-                            }
-                            .guest-meal-menu-child-field-value {
-                            }
+                        }
+                        .hint {
+                            display: block;
+                            margin-bottom: 1rem;
                         }
                     }
                 }
             }
+        }
+    }
+    button[type=submit] {
+        cursor: pointer;
+        transition: background-color ease 250ms;
+        background-color: $primary-color;
+        color: #000000;
+        padding: .5rem 1rem;
+        display: block;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        width: 100%;
+        &:hover {
+            background-color: lighten($primary-color, 10%);
         }
     }
 }

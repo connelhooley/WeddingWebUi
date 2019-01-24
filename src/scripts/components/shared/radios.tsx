@@ -1,12 +1,13 @@
 import React, { ChangeEvent, Component } from "react";
 
 export interface Radio<T extends string> {
-    label: string;
+    label: string | JSX.Element;
     value: T;
 }
 
 export interface RadiosProps<T extends string> {
     mainLabel: string;
+    disabled?: boolean;
     value?: T;
     radios: Array<Radio<T>>;
     onChange: (value: T) => void;
@@ -27,6 +28,7 @@ export class Radios<T extends string> extends Component<RadiosProps<T>> {
                             <label key={value}>
                                 <input
                                     type="radio"
+                                    disabled={this.props.disabled === true}
                                     value={value}
                                     checked={this.props.value === value}
                                     onChange={this.handleChange} />

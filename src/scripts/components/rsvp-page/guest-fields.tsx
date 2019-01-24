@@ -1,5 +1,6 @@
 import React from "react";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AttendingField, AttendingFormModel } from "./attending-field";
 import { DessertFormModel } from "./dessert-field";
 import { DietaryRequirementField } from "./dietary-requirement-field";
@@ -18,7 +19,7 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
     return (
         <div className="guest">
             <header className="guest-header">
-                {values.firstName}
+                <FontAwesomeIcon icon="user" />&nbsp;{values.firstName}
             </header>
             <div className="guest-fields">
                 <AttendingField
@@ -27,6 +28,7 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
                     onChange={(attending) => onChange({ ...values, attending})} />
                 <MealFields
                     age={values.age}
+                    attending={values.attending}
                     inviteType={values.inviteType}
                     isChildSetMenu={values.isChildSetMenu}
                     starter={values.starter}
@@ -38,6 +40,7 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
                     onIsChildSetMenuChange={(isChildSetMenu) => onChange({ ...values, isChildSetMenu})} />
                 <DrinksPreferenceFields
                     age={values.age}
+                    attending={values.attending}
                     inviteType={values.inviteType}
                     drinkPreferenceRed={values.drinkPreferenceRed}
                     drinkPreferenceWhite={values.drinkPreferenceWhite}
@@ -50,10 +53,12 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
                         onChange({ ...values, drinkPreferenceRose})} />
                 <DietaryRequirementField
                     age={values.age}
+                    attending={values.attending}
                     value={values.dietaryRequirements}
                     onChange={(dietaryRequirements) => onChange({ ...values, dietaryRequirements})} />
                 <SongRequestField
                     age={values.age}
+                    attending={values.attending}
                     value={values.songRequest}
                     onChange={(songRequest) => onChange({ ...values, songRequest})} />
             </div>

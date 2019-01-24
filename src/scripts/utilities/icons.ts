@@ -1,12 +1,18 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
-    faCaretDown,
+    faVimeoV,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+    faCheckCircle,
     faSpinner,
+    faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
 export function loadIcons(): void {
     library.add(
-        faCaretDown,
+        faCheckCircle,
         faSpinner,
+        faUser,
+        faVimeoV,
     );
 }

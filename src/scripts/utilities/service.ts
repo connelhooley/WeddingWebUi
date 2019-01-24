@@ -79,6 +79,6 @@ export type AgeDto = "Infant" | "Child" | "YoungAdult" | "Adult";
 
 export type StarterDto = "PrawnCocktail" | "Asparagus" | "ChildSetMenu";
 
-export type MainDto = "CodAndChips" | "HuntersChicken" | "ChildSetMenu";
+export type MainDto = "CodAndChips" | "HuntersChicken"| "StuffedCourgette" | "ChildSetMenu";
 
 export type DessertDto = "EtonMess" | "ChocolateBrownie" | "ChildSetMenu";

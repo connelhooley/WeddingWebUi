@@ -1,9 +1,11 @@
 import React from "react";
 
 import { AgeDto, InviteTypeDto } from "../../utilities/service";
+import { AttendingFormModel } from "./attending-field";
 
 export interface DrinksPreferenceFieldsProps {
     age: AgeDto;
+    attending: AttendingFormModel;
     inviteType: InviteTypeDto;
     drinkPreferenceRed?: boolean;
     drinkPreferenceWhite?: boolean;
@@ -16,6 +18,7 @@ export interface DrinksPreferenceFieldsProps {
 export function DrinksPreferenceFields(
     {
         age,
+        attending,
         inviteType,
         drinkPreferenceRed,
         drinkPreferenceWhite,
@@ -25,7 +28,7 @@ export function DrinksPreferenceFields(
         onDrinkPreferenceRedChange,
     }: DrinksPreferenceFieldsProps,
 ): JSX.Element {
-    if (inviteType === "Evening" || age !== "Adult") {
+    if (attending !== "Day" || inviteType === "Evening" || age !== "Adult") {
         return <></>;
     }
     return (

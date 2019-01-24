@@ -7,7 +7,9 @@ export function Root() {
     return (
         <BrowserRouter>
             <>
-                <h1>Wedding Coming Soon</h1>
+                <header id="site-header">
+                    <h1>Fowler-Hooley Wedding</h1>
+                </header>
                 <main>
                     <Switch>
                         <Route path="/" exact component={HomePage} />

@@ -1,6 +1,7 @@
 import React, { ChangeEvent, Component, FormEvent } from "react";
 import { Redirect } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getInviteId, storeInviteId } from "../../utilities/local-storage";
 import { validateInviteId } from "../../utilities/service";
 
@@ -38,28 +39,27 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
             );
         } else {
             return (
-                <div>
-                    <div>
+                <form className="invite-id-form" onSubmit={this.handleSubmit} >
+                    <header className="invite-id-header">
                         Send RSVP
+                    </header>
+                    <input
+                        value={this.state.inviteId}
+                        name="inviteId"
+                        type="text"
+                        placeholder="Please enter your RSVP code here..."
+                        required
+                        onChange={this.handleChange} />
+                    <div hidden={!this.state.failed} className="invite-id-field-error">
+                        Sorry, we couldn't find that RSVP code<br />
+                        Please try again
                     </div>
-                    <form onSubmit={this.handleSubmit} >
-                        <label>
-                            RSVP Code
-                            <input
-                                value={this.state.inviteId}
-                                name="inviteId"
-                                type="text"
-                                required
-                                onChange={this.handleChange} />
-                        </label>
-                        <span hidden={!this.state.failed} className="form-error">
-                            Sorry, we couldn't find that RSVP code. Please try again.
-                        </span>
-                        <button type="submit" disabled={this.state.saving}>
-                            {this.state.saving ? "Loading" : "Continue"}
-                        </button>
-                    </form>
-                </div>
+                    <button type="submit" disabled={this.state.saving}>
+                        {this.state.saving
+                            ? "Loading"
+                            : <>Continue&nbsp;<FontAwesomeIcon icon="arrow-right" /></>}
+                    </button>
+                </form>
             );
         }
     }

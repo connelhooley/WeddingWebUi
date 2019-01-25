@@ -1,5 +1,6 @@
 @import "~normalize.css/normalize";
-@import url('https://fonts.googleapis.com/css?family=Sacramento');
+// @import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
@@ -7,7 +8,7 @@ $primary-color: #ffcf58;
 $inactive-color: #dddddd;
 $body-font-family: "Noto Sans", sans-serif;;
 $header-font-family: "Noto Serif SC", serif;
-$alt-font-family: 'Sacramento', cursive;
+$alt-font-family: "Dancing Script", cursive;
 
 * {
     box-sizing: border-box;
@@ -15,7 +16,6 @@ $alt-font-family: 'Sacramento', cursive;
 
 body {
     font-family: $body-font-family;
-    padding: 1rem;
 }
 
 h1,
@@ -27,16 +27,117 @@ h6 {
     font-family: $header-font-family;
 }
 
-#site-header {
-    padding: 2rem 0;
-    h1 {
-        text-align: center;
-        margin: 0;
+button {
+    cursor: pointer;
+    transition: background-color ease 250ms;
+    background-color: $primary-color;
+    color: #000000;
+    padding: .5rem 1rem;
+    display: block;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 100%;
+    &:hover {
+        background-color: lighten($primary-color, 10%);
     }
+    svg {
+        color: #FFFFFF;
+    }
+    &[disabled] {
+        transition: none;
+        background-color: #dddddd;
+    }
+}
+
+#site-header {
+    background-color: $primary-color;
+    color: #000000;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    #site-header-title {
+        font-size: 2rem;
+        text-align: left;
+        margin: 0;
+        &:active,
+        &:focus,
+        &:hover,
+        &:link,
+        &:visited {
+            color: #000000;
+            text-decoration: none;
+        }
+    }
+    .site-nav-item {
+        font-size: 1.6rem;
+        &:active,
+        &:focus,
+        &:hover,
+        &:link,
+        &:visited {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    }
+    #site-header-title,
+    .site-nav-item {
+        display: flex;
+        padding: 1.5rem 1rem;
+        justify-content: center;
+        align-items: center;
+        transition: all ease 500ms;
+        font-family: $alt-font-family;
+        &:hover {
+            background-color: darken($primary-color, 8%);
+        }
+    }
+}
+
+#site-content {
+    padding: 1rem;
 }
 
 .vegetarian {
     color: #00a83d;
+}
+
+.invite-id-form {
+    border: 1px solid #7c7c7c;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 400px;
+    border-radius: 4px;
+    .invite-id-header {
+        background-color: #7c7c7c;
+        font-size: 1.5rem;
+        font-family: $header-font-family;
+        text-transform: uppercase;
+        padding: 1rem;
+    }
+    .invite-id-field-error {
+        background-color: #b72121;
+        color: #FFFFFF;
+        padding: .5rem 1rem;
+    }
+    input {
+        margin: 0;
+        border-radius: 4px;
+        padding: 0.5rem;
+        border: 1px solid #878787;
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        outline: none;
+        border-radius: 0;
+        &:focus {
+            border: 1x solid #000000;
+        }
+    }
+    button {
+        border-radius: 0;
+        border: 1px solid #878787;
+        border-top: none;
+    }
 }
 
 .rsvp-form {
@@ -49,7 +150,7 @@ h6 {
         .guest-header {
             font-family: $header-font-family;
             text-transform: uppercase;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             padding: .5rem 1rem;
             background-color: #7c7c7c;
             color: #FFFFFF;
@@ -210,20 +311,6 @@ h6 {
                     }
                 }
             }
-        }
-    }
-    button[type=submit] {
-        cursor: pointer;
-        transition: background-color ease 250ms;
-        background-color: $primary-color;
-        color: #000000;
-        padding: .5rem 1rem;
-        display: block;
-        border: 1px solid #000000;
-        border-radius: 4px;
-        width: 100%;
-        &:hover {
-            background-color: lighten($primary-color, 10%);
         }
     }
 }

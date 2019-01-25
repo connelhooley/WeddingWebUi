@@ -3,6 +3,7 @@ import {
     faVimeoV,
 } from "@fortawesome/free-brands-svg-icons";
 import {
+    faArrowRight,
     faCheckCircle,
     faSpinner,
     faUser,
@@ -10,6 +11,7 @@ import {
 
 export function loadIcons(): void {
     library.add(
+        faArrowRight,
         faCheckCircle,
         faSpinner,
         faUser,

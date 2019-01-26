@@ -4,7 +4,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import {
     faArrowRight,
+    faBars,
     faCheckCircle,
+    faExternalLinkAlt,
     faSpinner,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +14,9 @@ import {
 export function loadIcons(): void {
     library.add(
         faArrowRight,
+        faBars,
         faCheckCircle,
+        faExternalLinkAlt,
         faSpinner,
         faUser,
         faVimeoV,

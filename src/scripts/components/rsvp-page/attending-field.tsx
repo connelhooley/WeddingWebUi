@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Radio, Radios } from "../shared/radios";
 import { InviteTypeFormModel } from "./guest-fields";
+import { Radio, Radios } from "./radios";
 
 export interface GuestFieldsProps {
     inviteType: InviteTypeFormModel;

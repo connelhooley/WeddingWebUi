@@ -1,7 +1,7 @@
 import React from "react";
 
 import { StarterDto } from "../../utilities/service";
-import { Radio, Radios } from "../shared/radios";
+import { Radio, Radios } from "./radios";
 
 export interface StarterFieldProps {
     value: StarterDto;

@@ -27,66 +27,92 @@ h6 {
     font-family: $header-font-family;
 }
 
-button {
-    cursor: pointer;
-    transition: background-color ease 250ms;
-    background-color: $primary-color;
-    color: #000000;
-    padding: .5rem 1rem;
-    display: block;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    width: 100%;
-    &:hover {
-        background-color: lighten($primary-color, 10%);
-    }
-    svg {
-        color: #FFFFFF;
-    }
-    &[disabled] {
-        transition: none;
-        background-color: #dddddd;
-    }
-}
-
 #site-header {
     background-color: $primary-color;
     color: #000000;
     margin-bottom: 2rem;
     display: flex;
+    font-family: $alt-font-family;
+    justify-content: space-between;
     flex-direction: row;
-    #site-header-title {
-        font-size: 2rem;
-        text-align: left;
-        margin: 0;
-        &:active,
-        &:focus,
-        &:hover,
-        &:link,
-        &:visited {
-            color: #000000;
-            text-decoration: none;
+    @media (max-width: 767.98px) {
+        display: block;
+    }
+    #site-title {
+        @media (max-width: 767.98px) {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+        }   
+        #site-title-link {
+            display: block;
+            font-size: 2rem;
+            &:active,
+            &:focus,
+            &:hover,
+            &:link,
+            &:visited {
+                color: #000000;
+                text-decoration: none;
+            }
+        }
+        #site-nav-button-wrapper {
+            display: none;
+            @media (max-width: 767.98px) {
+                display: flex;
+            }
+            #site-nav-button {
+                cursor: pointer;
+                background-color: transparent;
+                color: #FFFFFF;
+                border: 1px solid #FFFFFF;
+                font-size: 1.7rem;
+                border-radius: 4px;
+                outline: none;
+                transition: color linear 200ms, border linear 200ms;
+                &:hover {
+                    color: #000000;
+                    border: 1px solid #000000;
+                }
+            }
         }
     }
-    .site-nav-item {
-        font-size: 1.6rem;
-        &:active,
-        &:focus,
-        &:hover,
-        &:link,
-        &:visited {
-            color: #FFFFFF;
-            text-decoration: none;
-        }
-    }
-    #site-header-title,
-    .site-nav-item {
+    #site-nav {
         display: flex;
+        @media (max-width: 767.98px) {
+            display: none;
+        }
+        .site-nav-item {
+            display: block;
+            font-size: 1.6rem;
+            &:active,
+            &:focus,
+            &:hover,
+            &:link,
+            &:visited {
+                color: #FFFFFF;
+                text-decoration: none;
+            }
+        }
+        &.site-nav-open {
+            display: block;
+            flex-direction: column;
+            .site-nav-item {
+                display: block;
+                text-align: right;
+            }
+        }
+    }
+    #site-title #site-title-link,
+    #site-title #site-nav-button-wrapper,
+    #site-nav .site-nav-item {
         padding: 1.5rem 1rem;
+        transition: background-color ease 500ms;
         justify-content: center;
         align-items: center;
-        transition: all ease 500ms;
-        font-family: $alt-font-family;
+    }
+    #site-title #site-title-link,
+    #site-nav .site-nav-item {
         &:hover {
             background-color: darken($primary-color, 8%);
         }
@@ -102,13 +128,16 @@ button {
 }
 
 .invite-id-form {
-    border: 1px solid #7c7c7c;
     margin-left: auto;
     margin-right: auto;
     max-width: 400px;
     border-radius: 4px;
     .invite-id-header {
         background-color: #7c7c7c;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
         font-size: 1.5rem;
         font-family: $header-font-family;
         text-transform: uppercase;
@@ -118,29 +147,66 @@ button {
         background-color: #b72121;
         color: #FFFFFF;
         padding: .5rem 1rem;
+        border-top: none;
+        border-left: 1px solid #7c7c7c;
+        border-bottom: none;
+        border-right: 1px solid #7c7c7c;
+
     }
     input {
         margin: 0;
-        border-radius: 4px;
         padding: 0.5rem;
-        border: 1px solid #878787;
         display: block;
         box-sizing: border-box;
         width: 100%;
         outline: none;
         border-radius: 0;
+        border-top: none;
+        border-left: 1px solid #7c7c7c;
+        border-bottom: none;
+        border-right: 1px solid #7c7c7c;
         &:focus {
             border: 1x solid #000000;
         }
     }
     button {
-        border-radius: 0;
-        border: 1px solid #878787;
-        border-top: none;
+        cursor: pointer;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-top: 1px solid #7c7c7c;
+        border-right: 1px solid #7c7c7c;
+        border-bottom: 1px solid #7c7c7c;
+        border-left: 1px solid #7c7c7c;
+        transition: background-color ease 250ms;
+        background-color: $primary-color;
+        color: #000000;
+        padding: .5rem 1rem;
+        display: block;
+        width: 100%;
+        &:hover {
+            background-color: lighten($primary-color, 10%);
+        }
+        svg {
+            color: #FFFFFF;
+        }
+        &[disabled] {
+            cursor: not-allowed;
+            transition: none;
+            background-color: #dddddd;
+        }
     }
 }
 
-.rsvp-form {
+#rsvp-form-loading {
+    font-size: 4rem;
+    color: #7c7c7c;
+    padding: 2rem;
+    text-align: center;
+}
+
+#rsvp-form {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
@@ -201,6 +267,19 @@ button {
             }
             .hint {
                 color: #8e8e8e;
+                a {
+                    &:active,
+                    &:focus,
+                    &:hover,
+                    &:link,
+                    &:visited {
+                        color: darken($primary-color, 10%);
+                        text-decoration: none;
+                    }
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
             }
             .guest-meal-menus {
                 display: flex;
@@ -311,6 +390,28 @@ button {
                     }
                 }
             }
+        }
+    }
+    button {
+        cursor: pointer;
+        transition: background-color ease 250ms;
+        background-color: $primary-color;
+        color: #000000;
+        padding: .5rem 1rem;
+        display: block;
+        border: 1px solid #000000;
+        border-radius: 4px;
+        width: 100%;
+        &:hover {
+            background-color: lighten($primary-color, 10%);
+        }
+        svg {
+            color: #FFFFFF;
+        }
+        &[disabled] {
+            cursor: not-allowed;
+            transition: none;
+            background-color: #dddddd;
         }
     }
 }

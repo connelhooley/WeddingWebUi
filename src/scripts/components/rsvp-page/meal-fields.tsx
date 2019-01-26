@@ -6,6 +6,7 @@ import { DessertField, DessertFormModel } from "./dessert-field";
 import { AgeFormModel, InviteTypeFormModel } from "./guest-fields";
 import { MainField, MainFormModel } from "./main-field";
 import { StarterField, StarterFormModel } from "./starter-field";
+import { Link } from "react-router-dom";
 
 export interface MealFieldsProps {
     age: AgeFormModel;
@@ -62,6 +63,8 @@ export function MealFields(
             <div className="guest-field">
                 <label className="hint">
                     You can order either from the adult menu, or you can order the child set menu.
+                    Click <Link to="/food-menu" target="_BLANK">here&nbsp;
+                    <FontAwesomeIcon icon="external-link-alt"/></Link> to see the menus in full.
                 </label>
             </div>
             <div className="guest-meal-menus">

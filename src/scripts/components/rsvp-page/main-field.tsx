@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import { MainDto } from "../../utilities/service";
-import { Radio, Radios } from "../shared/radios";
+import { Radio, Radios } from "./radios";
 
 export interface MainFieldProps {
     value: MainDto;

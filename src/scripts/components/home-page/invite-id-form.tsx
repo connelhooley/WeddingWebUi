@@ -56,7 +56,7 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
                     </div>
                     <button type="submit" disabled={this.state.saving}>
                         {this.state.saving
-                            ? "Loading"
+                            ? <>Loading&nbsp;<FontAwesomeIcon icon="spinner" pulse={true} /></>
                             : <>Continue&nbsp;<FontAwesomeIcon icon="arrow-right" /></>}
                     </button>
                 </form>

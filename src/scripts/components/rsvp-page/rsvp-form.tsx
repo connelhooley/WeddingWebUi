@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { getInviteId } from "../../utilities/local-storage";
@@ -44,11 +45,13 @@ export class RsvpForm extends Component<{}, RsvpFormState> {
             );
         } else if (this.state.loading) {
             return (
-                <p>Loading...</p>
+                <div id="rsvp-form-loading">
+                    <FontAwesomeIcon icon="spinner" pulse={true} />
+                </div>
             );
         } else {
             return (
-                <form className="rsvp-form" onSubmit={this.handleSubmit}>
+                <form id="rsvp-form" onSubmit={this.handleSubmit}>
                     {this.state.rsvp.guests.map((guest) =>
                         <GuestFields
                             key={guest.firstName}

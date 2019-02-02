@@ -4,6 +4,8 @@ import { RsvpForm } from "./rsvp-page/rsvp-form";
 
 export function RsvpPage(): JSX.Element {
     return (
-        <RsvpForm />
+        <div id="rsvp-page">
+            <RsvpForm />
+        </div>
     );
 }

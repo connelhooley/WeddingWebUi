@@ -1,10 +1,10 @@
 @import "~normalize.css/normalize";
-// @import url('https://fonts.googleapis.com/css?family=Sacramento');
 @import url('https://fonts.googleapis.com/css?family=Dancing+Script');
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
 
 $primary-color: #ffcf58;
+$secondary-color: #dfdfdf;
 $inactive-color: #dddddd;
 $body-font-family: "Noto Sans", sans-serif;;
 $header-font-family: "Noto Serif SC", serif;
@@ -28,9 +28,9 @@ h6 {
 }
 
 #site-header {
-    background-color: $primary-color;
+    border-bottom: 1px dashed $secondary-color;
+    background-color: #FFFFFF;
     color: #000000;
-    margin-bottom: 2rem;
     display: flex;
     font-family: $alt-font-family;
     justify-content: space-between;
@@ -90,7 +90,7 @@ h6 {
             &:hover,
             &:link,
             &:visited {
-                color: #FFFFFF;
+                color: #000000;
                 text-decoration: none;
             }
         }
@@ -114,13 +114,9 @@ h6 {
     #site-title #site-title-link,
     #site-nav .site-nav-item {
         &:hover {
-            background-color: darken($primary-color, 8%);
+            background-color: #f7f7f7;
         }
     }
-}
-
-#site-content {
-    padding: 1rem;
 }
 
 .vegetarian {
@@ -128,12 +124,10 @@ h6 {
 }
 
 .invite-id-form {
-    margin-left: auto;
-    margin-right: auto;
     max-width: 400px;
     border-radius: 4px;
     .invite-id-header {
-        background-color: #7c7c7c;
+        background-color: transparentize($color: #7c7c7c, $amount: .3);
         border-top-left-radius: 4px;
         border-top-right-radius: 4px;
         border-bottom-left-radius: 0;
@@ -414,4 +408,29 @@ h6 {
             background-color: #dddddd;
         }
     }
+}
+
+#home-page {
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+    #home-banner-img {
+        width: 100%;
+        height: auto;
+    }
+    #invite-id-form-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+#rsvp-page {
+    margin-top: 2rem;
 }

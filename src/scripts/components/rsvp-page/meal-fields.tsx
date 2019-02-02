@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { MouseEvent } from "react";
 
+import { Link } from "react-router-dom";
 import { AttendingFormModel } from "./attending-field";
 import { DessertField, DessertFormModel } from "./dessert-field";
 import { AgeFormModel, InviteTypeFormModel } from "./guest-fields";
 import { MainField, MainFormModel } from "./main-field";
 import { StarterField, StarterFormModel } from "./starter-field";
-import { Link } from "react-router-dom";
 
 export interface MealFieldsProps {
     age: AgeFormModel;

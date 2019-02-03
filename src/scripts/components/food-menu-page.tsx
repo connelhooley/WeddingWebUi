@@ -7,9 +7,9 @@ import { Vegetarian } from "./shared/vegetarian";
 
 import separatorImg from "../../images/daisy-2-ds.png";
 
-export function FoodMenusPage(): JSX.Element {
+export function FoodMenuPage(): JSX.Element {
     return (
-        <div id="food-menus-page">
+        <div id="food-menu-page">
             <h1>Wedding Breakfast Menu</h1>
             <div id="wedding-breakfast-menus">
                 <div id="food-menu-adult">

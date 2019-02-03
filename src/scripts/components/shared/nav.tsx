@@ -49,7 +49,7 @@ export class Nav extends Component<{}, INavState> {
                         onClick={this.handleMobileNavClickToggle}
                         className="site-nav-item"
                         activeClassName="site-nav-item-active"
-                        to="/food-menus" >
+                        to="/food-menu" >
                         <span className="site-nav-item-text">Food menu</span>
                     </NavLink>
                     <NavLink

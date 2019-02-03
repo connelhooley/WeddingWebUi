@@ -713,50 +713,50 @@ body {
     width: 100%;
     height: auto; }
 
-#food-menus-page {
+#food-menu-page {
   margin: 0 auto;
   font-size: 1.2rem;
   text-align: center; }
   @media (max-width: 850px) {
-    #food-menus-page {
+    #food-menu-page {
       text-align: left; } }
-  #food-menus-page h1,
-  #food-menus-page h2,
-  #food-menus-page h3 {
+  #food-menu-page h1,
+  #food-menu-page h2,
+  #food-menu-page h3 {
     text-transform: uppercase; }
-  #food-menus-page h1 {
+  #food-menu-page h1 {
     font-size: 2rem; }
-  #food-menus-page h2 {
+  #food-menu-page h2 {
     font-size: 1.6rem; }
-  #food-menus-page h3 {
+  #food-menu-page h3 {
     font-size: 1.4rem; }
-  #food-menus-page p {
+  #food-menu-page p {
     margin: 2rem 0; }
-  #food-menus-page img {
+  #food-menu-page img {
     width: 100%;
     height: auto; }
-  #food-menus-page #wedding-breakfast-menus {
+  #food-menu-page #wedding-breakfast-menus {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
     @media (max-width: 850px) {
-      #food-menus-page #wedding-breakfast-menus {
+      #food-menu-page #wedding-breakfast-menus {
         display: block; } }
-    #food-menus-page #wedding-breakfast-menus #food-menu-adult {
+    #food-menu-page #wedding-breakfast-menus #food-menu-adult {
       -webkit-box-flex: 1;
           -ms-flex: 1;
               flex: 1; }
-    #food-menus-page #wedding-breakfast-menus #food-menu-separator {
+    #food-menu-page #wedding-breakfast-menus #food-menu-separator {
       -webkit-box-flex: 0;
           -ms-flex: 0;
               flex: 0; }
       @media (max-width: 850px) {
-        #food-menus-page #wedding-breakfast-menus #food-menu-separator {
+        #food-menu-page #wedding-breakfast-menus #food-menu-separator {
           display: none; } }
-      #food-menus-page #wedding-breakfast-menus #food-menu-separator img {
+      #food-menu-page #wedding-breakfast-menus #food-menu-separator img {
         width: 200px;
         height: auto; }
-    #food-menus-page #wedding-breakfast-menus #food-menu-child {
+    #food-menu-page #wedding-breakfast-menus #food-menu-child {
       -webkit-box-flex: 1;
           -ms-flex: 1;
               flex: 1; }

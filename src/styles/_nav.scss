@@ -81,6 +81,15 @@
                 text-decoration: none;
             }
         }
+        .site-nav-item-active {
+            &:active,
+            &:focus,
+            &:hover,
+            &:link,
+            &:visited {
+                color: $primary-color;
+            }
+        }
         &.site-nav-open {
             display: block;
             flex-direction: column;

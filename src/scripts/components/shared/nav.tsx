@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import siteTitleImg from "../../../images/corner-daisy-ds.png";
 
@@ -37,15 +37,15 @@ export class Nav extends Component<{}, INavState> {
                     </div>
                 </div>
                 <nav id="site-nav" className={this.state.isMobileMenuOpen ? "site-nav-open" : ""}>
-                    <Link className="site-nav-item" to="/order-of-the-day" >
+                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/order-of-the-day" >
                         <span className="site-nav-item-text">Order of the day</span>
-                    </Link>
-                    <Link className="site-nav-item" to="/food-menu" >
+                    </NavLink>
+                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/food-menus" >
                         <span className="site-nav-item-text">Food menu</span>
-                    </Link>
-                    <Link className="site-nav-item" to="/location" >
+                    </NavLink>
+                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/location" >
                         <span className="site-nav-item-text">Location</span>
-                    </Link>
+                    </NavLink>
                 </nav>
             </header>
         );

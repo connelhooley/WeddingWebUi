@@ -1,0 +1,51 @@
+#food-menus-page {
+    margin: 0 auto;
+    font-size: 1.2rem;
+    text-align: center;
+    @include mobile-only {
+        text-align: left;
+    }
+    h1,
+    h2,
+    h3 {
+        text-transform: uppercase;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    h3 {
+        font-size: 1.4rem;
+    }
+    p {
+        margin: 2rem 0;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    #wedding-breakfast-menus {
+        display: flex;
+        @include mobile-only {
+            display: block;
+        }
+        #food-menu-adult {
+            flex: 1;
+        }
+        #food-menu-separator {    
+            flex: 0;
+            @include mobile-only {
+                display: none;
+            }
+            img {
+                width: 200px;
+                height: auto;
+            }
+        }
+        #food-menu-child {
+            flex: 1;
+        }
+    }
+}

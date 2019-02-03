@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import { DessertDto } from "../../utilities/service";
+import { Vegetarian } from "../shared/vegetarian";
 import { Radio, Radios } from "./radios";
 
 export interface DessertFieldProps {
@@ -14,11 +14,11 @@ export interface DessertFieldProps {
 export function DessertField({ value, onChange, firstName, disabled = false }: DessertFieldProps): JSX.Element {
     const radios: Array<Radio<DessertDto>> = [
         {
-            label: (<>Eton mess&nbsp;<FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} /></>),
+            label: (<>Eton mess&nbsp;<Vegetarian /></>),
             value: "EtonMess",
         },
         {
-            label: (<>Chocolate brownie&nbsp;<FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} /></>),
+            label: (<>Chocolate brownie&nbsp;<Vegetarian /></>),
             value: "ChocolateBrownie",
         },
     ];

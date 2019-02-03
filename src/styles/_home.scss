@@ -1,6 +1,6 @@
 #home-page {
     margin: 0 auto;
-    max-width: 670px;
+    max-width: 525px;
     position: relative;
     #home-banner-img {
         width: 100%;
@@ -55,7 +55,6 @@
     #invite-id-error,
     #invite-id-input,
     #invite-id-button {
-        font-family: $header-font-family;
         text-transform: uppercase;
         margin: 1rem 0;
     }

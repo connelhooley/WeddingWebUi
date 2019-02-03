@@ -21,8 +21,7 @@
 $primary-color: #ffcf58;
 $secondary-color: #dfdfdf;
 $inactive-color: #dddddd;
-$body-font-family: "Noto Sans", sans-serif;;
-$header-font-family: "Noto Serif SC", serif;
+$body-font-family: "Noto Serif SC", serif;
 $alt-font-family: "Dancing Script", cursive;
 
 * {
@@ -33,15 +32,6 @@ body {
     font-family: $body-font-family;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: $header-font-family;
-}
-
 #site-content {
     padding: 0 1rem;
 }
@@ -50,6 +40,13 @@ h6 {
     color: #00a83d;
 }
 
+.pescetarian {
+    color: #0945a0;
+}
+
 @import "nav";
 @import "home";
 @import "rsvp";
+@import "order-of-the-day";
+@import "location";
+@import "food";

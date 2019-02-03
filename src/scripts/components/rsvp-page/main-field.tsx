@@ -1,7 +1,7 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import { MainDto } from "../../utilities/service";
+import { Vegetarian } from "../shared/vegetarian";
 import { Radio, Radios } from "./radios";
 
 export interface MainFieldProps {
@@ -16,7 +16,7 @@ export function MainField({ value, onChange, firstName, disabled = false }: Main
         { label: "Cod and chips", value: "CodAndChips" },
         { label: "Hunter's chicken", value: "HuntersChicken" },
         {
-            label: (<>Stuffed courgette&nbsp;<FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} /></>),
+            label: (<>Stuffed courgette&nbsp;<Vegetarian /></>),
             value: "StuffedCourgette",
         },
     ];

@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { MouseEvent } from "react";
 
 import { Link } from "react-router-dom";
+import { Vegetarian } from "../shared/vegetarian";
 import { AttendingFormModel } from "./attending-field";
 import { DessertField, DessertFormModel } from "./dessert-field";
 import { AgeFormModel, InviteTypeFormModel } from "./guest-fields";
@@ -118,7 +119,7 @@ export function MealFields(
                                 Starter
                             </div>
                             <div className="guest-meal-menu-child-field-value">
-                                Cheesey bread&nbsp;<FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} />
+                                Cheesey bread&nbsp;<Vegetarian />
                             </div>
                         </div>
                         <div className="guest-meal-menu-child-field">
@@ -134,8 +135,7 @@ export function MealFields(
                                 Dessert
                             </div>
                             <div className="guest-meal-menu-child-field-value">
-                                Ice cream&nbsp;
-                                <FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} />
+                                Ice cream&nbsp;<Vegetarian />
                             </div>
                         </div>
                     </div>

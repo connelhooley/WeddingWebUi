@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+
+import { FoodMenusPage } from "./food-menus-page";
 import { HomePage } from "./home-page";
+import { LocationPage } from "./location-page";
+import { OrderOfTheDayPage } from "./order-of-the-day-page";
 import { RsvpPage } from "./rsvp-page";
 import { Nav } from "./shared/nav";
 
@@ -13,6 +17,10 @@ export function Root() {
                     <Switch>
                         <Route path="/" exact component={HomePage} />
                         <Route path="/rsvp" component={RsvpPage} />
+                        <Route path="/order-of-the-day" component={OrderOfTheDayPage} />
+                        <Route path="/food-menus" component={FoodMenusPage} />
+                        <Route path="/location" component={LocationPage} />
+                        <Route component={HomePage} />
                     </Switch>
                 </main>
             </>

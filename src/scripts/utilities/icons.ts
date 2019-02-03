@@ -7,6 +7,7 @@ import {
     faBars,
     faCheckCircle,
     faExternalLinkAlt,
+    faFish,
     faSpinner,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +18,7 @@ export function loadIcons(): void {
         faBars,
         faCheckCircle,
         faExternalLinkAlt,
+        faFish,
         faSpinner,
         faUser,
         faVimeoV,

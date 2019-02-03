@@ -1,6 +1,7 @@
 import React from "react";
 
 import { StarterDto } from "../../utilities/service";
+import { Pescetarian } from "../shared/pescetarian";
 import { Radio, Radios } from "./radios";
 
 export interface StarterFieldProps {
@@ -12,8 +13,14 @@ export interface StarterFieldProps {
 
 export function StarterField({ value, onChange, firstName, disabled = false }: StarterFieldProps): JSX.Element {
     const radios: Array<Radio<StarterDto>> = [
-        { label: "Prawn cocktail", value: "PrawnCocktail" },
-        { label: "Asparagus in Parma ham", value: "Asparagus" },
+        {
+            label: (<>Prawn cocktail&nbsp;<Pescetarian /></>),
+            value: "PrawnCocktail",
+        },
+        {
+            label: "Asparagus in Parma ham",
+            value: "Asparagus",
+        },
     ];
     return (
             <Radios<StarterDto>

@@ -1,6 +1,7 @@
 import React from "react";
 
 import { MainDto } from "../../utilities/service";
+import { Pescetarian } from "../shared/pescetarian";
 import { Vegetarian } from "../shared/vegetarian";
 import { Radio, Radios } from "./radios";
 
@@ -13,8 +14,14 @@ export interface MainFieldProps {
 
 export function MainField({ value, onChange, firstName, disabled = false }: MainFieldProps): JSX.Element {
     const radios: Array<Radio<MainDto>> = [
-        { label: "Cod and chips", value: "CodAndChips" },
-        { label: "Hunter's chicken", value: "HuntersChicken" },
+        {
+            label: (<>Cod and chips&nbsp;<Pescetarian /></>),
+            value: "CodAndChips",
+        },
+        {
+            label: "Hunter's chicken",
+            value: "HuntersChicken",
+        },
         {
             label: (<>Stuffed courgette&nbsp;<Vegetarian /></>),
             value: "StuffedCourgette",

@@ -22,7 +22,7 @@ export function FoodMenuPage(): JSX.Element {
                     <h3>Main Course</h3>
                     <p>Beer battered cod served with lemon wedge, hand cut chips &amp; peas&nbsp;<Pescetarian /></p>
                     <p>Hunters chicken - chicken breast wrapped in bacon filled with mature cheese &amp; topped with BBQ sauce served with hand cut chips &amp; peas</p>
-                    <p>Stuffed courgette with sweet pepper, aubergine &amp; tomatoes topped with Mozzarella served with a tomato salsa&nbsp;<Vegetarian /></p>
+                    <p>Stuffed courgette with sweet pepper, aubergine &amp; tomatoes topped with mozzarella served with a tomato salsa&nbsp;<Vegetarian /></p>
 
                     <h3>Dessert</h3>
                     <p>Eton mess&nbsp;<Vegetarian /></p>

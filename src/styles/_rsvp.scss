@@ -10,11 +10,37 @@
     text-align: center;
 }
 
-#rsvp-form {
+#rsvp-form-finished {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2rem;
+    a {
+        &:active,
+        &:focus,
+        &:hover,
+        &:link,
+        &:visited {
+            color: darken($primary-color, 10%);
+        }
+        &:hover {
+            color: $primary-color;
+        }
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+#rsvp-form,
+#rsvp-form-finished {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     font-family: $header-font-family;
+}
+
+#rsvp-form {
     .guest-header {
         text-transform: uppercase;
         font-size: 1.8rem;

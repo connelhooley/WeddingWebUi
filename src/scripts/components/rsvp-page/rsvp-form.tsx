@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import img from "../../../images/long-stem-and-leaves-ds-h.png";
 import { getInviteId } from "../../utilities/local-storage";
 import { mapDto, mapForm } from "../../utilities/mapper";
 import { getInvite, sendRsvp } from "../../utilities/service";
 import { GuestFields, GuestRsvpFormModel } from "./guest-fields";
+
+import completedSeparatorImg from "../../../images/daisy-chain-ds-h.png";
+import formSeparatorImg from "../../../images/long-stem-and-leaves-ds-h.png";
 
 export interface RsvpFormState {
     rsvp: RsvpFormModel;
@@ -43,7 +45,12 @@ export class RsvpForm extends Component<{}, RsvpFormState> {
     public render(): JSX.Element {
         if (this.state.saved) {
             return (
-                <Redirect to="/" />
+                <div id="rsvp-form-finished">
+                    <img src={completedSeparatorImg} />
+                    <p>Thanks for sending us your reply.</p>
+                    <p>Click <Link to="/"> here</Link> to go back to the home page.</p>
+                    <img src={completedSeparatorImg} />
+                </div>
             );
         } else if (this.state.loading) {
             return (
@@ -56,13 +63,13 @@ export class RsvpForm extends Component<{}, RsvpFormState> {
                 <form id="rsvp-form" onSubmit={this.handleSubmit}>
                     {this.state.rsvp.guests.map((guest) =>
                         <div key={guest.firstName}>
-                            <img className="guest-separator" src={img} />
+                            <img className="guest-separator" src={formSeparatorImg} />
                             <GuestFields
                                 guest={guest}
                                 onChange={this.handleGuestChange} />
                         </div>,
                     )}
-                    <img className="guest-separator" src={img} />
+                    <img className="guest-separator" src={formSeparatorImg} />
                     <div id="rsvp-form-submit">
                         <button id="rsvp-form-submit-button" type="submit" disabled={this.state.saving}>
                             {this.state.saving ? "Loading" : "Submit"}

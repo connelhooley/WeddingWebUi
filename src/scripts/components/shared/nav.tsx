@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import image from "../../../images/corner-daisy-ds.png";
+import siteTitleImg from "../../../images/corner-daisy-ds.png";
 
 interface INavState {
     isMobileMenuOpen: boolean;
@@ -22,7 +22,7 @@ export class Nav extends Component<{}, INavState> {
             <header id="site-header">
                 <div id="site-title">
                     <Link id="site-title-link" to="/">
-                        <img id="site-title-link-img" src={image} />
+                        <img id="site-title-link-img" src={siteTitleImg} />
                         <div id="site-title-link-text">
                             Fowler Hooley Wedding
                         </div>

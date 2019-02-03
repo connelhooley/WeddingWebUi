@@ -39,22 +39,24 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
             );
         } else {
             return (
-                <form className="invite-id-form" onSubmit={this.handleSubmit} >
-                    <header className="invite-id-header">
+                <form id="invite-id-form" onSubmit={this.handleSubmit} >
+                    <header id="invite-id-header">
                         Send RSVP
                     </header>
-                    <input
-                        value={this.state.inviteId}
-                        name="inviteId"
-                        type="text"
-                        placeholder="Please enter your RSVP code here..."
-                        required
-                        onChange={this.handleChange} />
-                    <div hidden={!this.state.failed} className="invite-id-field-error">
+                    <div hidden={!this.state.failed} id="invite-id-error">
                         Sorry, we couldn't find that RSVP code<br />
                         Please try again
                     </div>
-                    <button type="submit" disabled={this.state.saving}>
+                    <input
+                        id="invite-id-input"
+                        value={this.state.inviteId}
+                        name="inviteId"
+                        type="text"
+                        placeholder="Enter your RSVP code here..."
+                        required
+                        onChange={this.handleChange}
+                        data-lpignore="true"/>
+                    <button id="invite-id-button" type="submit" disabled={this.state.saving}>
                         {this.state.saving
                             ? <>Loading&nbsp;<FontAwesomeIcon icon="spinner" pulse={true} /></>
                             : <>Continue&nbsp;<FontAwesomeIcon icon="arrow-right" /></>}

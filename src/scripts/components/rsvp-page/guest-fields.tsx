@@ -23,10 +23,12 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
             </header>
             <div className="guest-fields">
                 <AttendingField
+                    firstName={values.firstName}
                     inviteType={values.inviteType}
                     value={values.attending}
                     onChange={(attending) => onChange({ ...values, attending})} />
                 <MealFields
+                    firstName={values.firstName}
                     age={values.age}
                     attending={values.attending}
                     inviteType={values.inviteType}
@@ -39,6 +41,7 @@ export function GuestFields({ guest: values, onChange }: GuestFieldsProps): JSX.
                     onDessertChange={(dessert) => onChange({ ...values, dessert})}
                     onIsChildSetMenuChange={(isChildSetMenu) => onChange({ ...values, isChildSetMenu})} />
                 <DrinksPreferenceFields
+                    firstName={values.firstName}
                     age={values.age}
                     attending={values.attending}
                     inviteType={values.inviteType}

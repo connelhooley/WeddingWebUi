@@ -1,0 +1,224 @@
+#rsvp-page {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+#rsvp-form-loading {
+    font-size: 4rem;
+    color: #7c7c7c;
+    padding: 2rem;
+    text-align: center;
+}
+
+#rsvp-form {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $header-font-family;
+    .guest-header {
+        text-transform: uppercase;
+        font-size: 1.8rem;
+    }
+    .guest-fields {
+        padding: .5rem 1rem;
+        .guest-field {
+            display: block;
+            margin-bottom: 1.5rem;
+            input,
+            .guest-field-check-boxes,
+            .guest-field-radios {
+                margin-top: .5rem;
+            }
+            label {
+                display: block;
+                margin-bottom: .25rem;
+            }
+            input {
+                display: block;
+                box-sizing: border-box;
+                width: 100%;
+                outline: none;
+                &:focus {
+                    border: 1px solid $primary-color;
+                }
+            }
+            input[type=radio],
+            input[type=checkbox] {
+                display: inline-block;
+                margin-top: 0;
+                margin-right: .25rem;
+                width: initial;
+            }
+            input[type=text] {
+                border-radius: 4px;
+                padding: 0.5rem;
+                border: 1px solid #878787;
+                &:focus {
+                    border: 1px solid $primary-color;
+                }
+            }
+        }
+        .hint {
+            color: #8e8e8e;
+            a {
+                &:active,
+                &:focus,
+                &:hover,
+                &:link,
+                &:visited {
+                    color: darken($primary-color, 10%);
+                    text-decoration: none;
+                }
+                &:hover {
+                    color: $primary-color;
+                }
+            }
+        }
+        .guest-meal-menus {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 1rem;
+            .guest-meal-menu {
+                flex: 50%;
+                box-shadow: 0 0 0 1.5px $inactive-color;
+                &,
+                input,
+                label {
+                    cursor: pointer;
+                }
+                &,
+                .guest-meal-menu-header {
+                    transition: all 250ms ease-in-out;
+                }
+                &:first-child {
+                    margin-right: .5rem;
+                }
+                &:last-child {
+                    margin-left: .5rem;
+                }
+                &.guest-meal-menu-selected {
+                    box-shadow: 0 0 0 1.5px $primary-color;
+                    &,
+                    input,
+                    label {
+                        cursor: default;
+                    }
+                    &,
+                    .guest-meal-menu-header
+                    {
+                        transition: none;
+                    }
+                    .guest-meal-menu-header {
+                        font-weight: 700;
+                        background-color: $primary-color;
+                        svg {
+                            display: initial;
+                        }
+                    }
+                    .guest-meal-menu-fields {
+                        color: #000000;
+                        .hint {
+                            color: #8e8e8e;
+                        }
+                    }
+                    .guest-meal-menu-selected-indicator {
+                        visibility: visible;
+                    }
+                }
+                &.guest-meal-menu-unselected {
+                    .guest-meal-menu-header {
+                        background-color: $inactive-color;
+                        svg {
+                            display: none;
+                        }
+                    }
+                    .guest-meal-menu-selected-indicator {
+                        visibility: hidden;
+                    }
+                    .guest-meal-menu-fields {
+                        &,
+                        .hint,
+                        .vegetarian {
+                            color: $inactive-color;
+                        }
+                    }
+                    &:hover {
+                        box-shadow: 0 0 0 1.5px lighten($primary-color, 20%);
+                        .guest-meal-menu-header {
+                            background-color: lighten($primary-color, 20%);
+                        }
+                    }
+                }
+                .guest-meal-menu-header {
+                    padding: .5rem 1rem;
+                    border: none;
+                    text-align: center;
+                    display: block;
+                    width: 100%;
+                    svg {
+                        color: #FFFFFF;
+                    }
+                }
+                .guest-meal-menu-selected-indicator {
+                    text-align: center;
+                    .chevron {
+                        margin-left: auto;
+                        margin-right: auto;
+                        width: 0;
+                        height: 0;
+                        border-left: 30px solid transparent;
+                        border-right: 30px solid transparent;
+                        border-top: 12px solid $primary-color;
+                    }
+                }
+                .guest-meal-menu-fields {
+                    padding: .5rem 1rem;
+                    .guest-meal-menu-child-field {
+                        margin-bottom: 1rem;
+                    }
+                    .hint {
+                        display: block;
+                        margin-bottom: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    .guest-separator {
+        width: 100%;
+        height: auto;
+    }
+    .guest-header,
+    .guest-fields,
+    #rsvp-form-submit {
+        padding: .5rem 1rem;
+        @include mobile-only {
+            padding: .5rem 0;
+        }
+    }
+    #rsvp-form-submit-button {
+        cursor: pointer;
+        font-size: 1.3rem;
+        border: none;
+        border-radius: 4px;
+        border: 1px solid #e6e6e6;
+        transition: background-color ease 250ms;
+        background-color: $primary-color;
+        color: #000000;
+        padding: .5rem 1rem;
+        display: block;
+        width: 100%;
+        text-transform: uppercase;
+        &:hover {
+            background-color: lighten($primary-color, 10%);
+        }
+        svg {
+            color: #FFFFFF;
+        }
+        &[disabled] {
+            cursor: not-allowed;
+            transition: none;
+            background-color: #dddddd;
+        }
+    }
+}

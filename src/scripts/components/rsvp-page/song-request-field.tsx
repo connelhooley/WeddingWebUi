@@ -11,7 +11,7 @@ export interface SongRequestFieldProps {
 }
 
 export function SongRequestField({ age, attending, value, onChange }: SongRequestFieldProps): JSX.Element {
-    if (attending === "NotAttending" || age === "Infant") {
+    if (attending === null || attending === "NotAttending" || age === "Infant") {
         return <></>;
     }
     return (
@@ -22,7 +22,8 @@ export function SongRequestField({ age, attending, value, onChange }: SongReques
                     type="text"
                     maxLength={280}
                     value={value}
-                    onChange={(e) => onChange(e.target.value)} />
+                    onChange={(e) => onChange(e.target.value)}
+                    data-lpignore="true" />
             </label>
         </div>
     );

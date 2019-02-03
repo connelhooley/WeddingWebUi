@@ -1,5 +1,5 @@
 import { DessertFormModel } from "../components/rsvp-page/dessert-field";
-import { GuestRsvpFormModel } from "../components/rsvp-page/guest-fields";
+import { AgeFormModel, GuestRsvpFormModel } from "../components/rsvp-page/guest-fields";
 import { MainFormModel } from "../components/rsvp-page/main-field";
 import { RsvpFormModel } from "../components/rsvp-page/rsvp-form";
 import { StarterFormModel } from "../components/rsvp-page/starter-field";
@@ -21,13 +21,40 @@ export function mapDto(invite: InviteDto): RsvpFormModel  {
         g.dessert === "ChildSetMenu" ? undefined : g.dessert;
 
     return {
-        guests: invite.guests.map((g) => ({
-            ...g,
-            isChildSetMenu: mapIsChildSetMenu(g),
-            starter: mapStarter(g),
-            main: mapMain(g),
-            dessert: mapDessert(g),
-        })),
+        guests: invite.guests
+            .map((g) => ({
+                ...g,
+                isChildSetMenu: mapIsChildSetMenu(g),
+                starter: mapStarter(g),
+                main: mapMain(g),
+                dessert: mapDessert(g),
+            }))
+            .sort((a: GuestRsvpFormModel, b: GuestRsvpFormModel) => {
+                if (a.firstName < b.firstName) {
+                    return -1;
+                }
+                if (a.firstName > b.firstName) {
+                    return 1;
+                }
+                return 0;
+            })
+            .sort((a: GuestRsvpFormModel, b: GuestRsvpFormModel) => {
+                function mapAgeToInt(age: AgeFormModel) {
+                    if (age === "Infant") {
+                        return 3;
+                    }
+                    if (age === "Child") {
+                        return 2;
+                    }
+                    if (age === "YoungAdult") {
+                        return 1;
+                    }
+                    if (age === "Adult") {
+                        return 0;
+                    }
+                }
+                return mapAgeToInt(a.age) - mapAgeToInt(b.age);
+            }),
     };
 }
 

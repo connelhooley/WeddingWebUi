@@ -13,7 +13,9 @@ export interface DietaryRequirementFieldProps {
 export function DietaryRequirementField(
     { age, attending, value, onChange }: DietaryRequirementFieldProps,
 ): JSX.Element {
-    if (attending === "NotAttending" || age === "Infant") {
+    // tslint:disable-next-line:no-console
+    console.dir(attending);
+    if (attending === null || attending === "NotAttending" || age === "Infant") {
         return <></>;
     }
     return (
@@ -24,7 +26,8 @@ export function DietaryRequirementField(
                     type="text"
                     maxLength={280}
                     value={value}
-                    onChange={(e) => onChange(e.target.value)} />
+                    onChange={(e) => onChange(e.target.value)}
+                    data-lpignore="true"/>
             </label>
         </div>
     );

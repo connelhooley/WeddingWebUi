@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
+
+import img from "../../../images/long-stem-and-leaves-ds-h.png";
 import { getInviteId } from "../../utilities/local-storage";
 import { mapDto, mapForm } from "../../utilities/mapper";
 import { getInvite, sendRsvp } from "../../utilities/service";
@@ -53,12 +55,16 @@ export class RsvpForm extends Component<{}, RsvpFormState> {
             return (
                 <form id="rsvp-form" onSubmit={this.handleSubmit}>
                     {this.state.rsvp.guests.map((guest) =>
-                        <GuestFields
-                            key={guest.firstName}
-                            guest={guest}
-                            onChange={this.handleGuestChange} />)}
-                    <div className="guest-field">
-                        <button type="submit" disabled={this.state.saving}>
+                        <div key={guest.firstName}>
+                            <img className="guest-separator" src={img} />
+                            <GuestFields
+                                guest={guest}
+                                onChange={this.handleGuestChange} />
+                        </div>,
+                    )}
+                    <img className="guest-separator" src={img} />
+                    <div id="rsvp-form-submit">
+                        <button id="rsvp-form-submit-button" type="submit" disabled={this.state.saving}>
                             {this.state.saving ? "Loading" : "Submit"}
                         </button>
                     </div>

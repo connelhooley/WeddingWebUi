@@ -5,17 +5,19 @@ import { Radio, Radios } from "./radios";
 
 export interface StarterFieldProps {
     value: StarterDto;
+    firstName: string;
     disabled?: boolean;
     onChange: (value: StarterDto) => void;
 }
 
-export function StarterField({ value, onChange, disabled = false }: StarterFieldProps): JSX.Element {
+export function StarterField({ value, onChange, firstName, disabled = false }: StarterFieldProps): JSX.Element {
     const radios: Array<Radio<StarterDto>> = [
         { label: "Prawn cocktail", value: "PrawnCocktail" },
         { label: "Asparagus in Parma ham", value: "Asparagus" },
     ];
     return (
             <Radios<StarterDto>
+                name={`${firstName}-starter`}
                 mainLabel="Starter"
                 disabled={disabled}
                 value={value}

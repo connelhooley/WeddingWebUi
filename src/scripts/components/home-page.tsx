@@ -1,7 +1,6 @@
 import React from "react";
 
-// tslint:disable-next-line:no-var-requires
-import img from "../../images/all-daisies-ds.png";
+import img from "../../images/all-daisies-ds-cropped.png";
 import { InviteIdForm } from "./home-page/invite-id-form";
 
 export function HomePage(): JSX.Element {

@@ -4,12 +4,13 @@ import { InviteTypeFormModel } from "./guest-fields";
 import { Radio, Radios } from "./radios";
 
 export interface GuestFieldsProps {
+    firstName: string;
     inviteType: InviteTypeFormModel;
     value: AttendingFormModel;
     onChange: (value: AttendingFormModel) => void;
 }
 
-export function AttendingField({ inviteType, value, onChange }: GuestFieldsProps): JSX.Element {
+export function AttendingField({ firstName, inviteType, value, onChange }: GuestFieldsProps): JSX.Element {
     const message = inviteType === "Day"
         ? "You are invited to join us on our special day"
         : "You are invited to join us on our special day at the evening reception";
@@ -27,6 +28,7 @@ export function AttendingField({ inviteType, value, onChange }: GuestFieldsProps
             ];
     return (
         <Radios<AttendingFormModel>
+            name={`${firstName}-attending`}
             mainLabel={message}
             radios={radios}
             value={value}

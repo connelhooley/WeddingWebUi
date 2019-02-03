@@ -6,11 +6,12 @@ import { Radio, Radios } from "./radios";
 
 export interface MainFieldProps {
     value: MainDto;
+    firstName: string;
     disabled?: boolean;
     onChange: (value: MainDto) => void;
 }
 
-export function MainField({ value, onChange, disabled = false }: MainFieldProps): JSX.Element {
+export function MainField({ value, onChange, firstName, disabled = false }: MainFieldProps): JSX.Element {
     const radios: Array<Radio<MainDto>> = [
         { label: "Cod and chips", value: "CodAndChips" },
         { label: "Hunter's chicken", value: "HuntersChicken" },
@@ -21,6 +22,7 @@ export function MainField({ value, onChange, disabled = false }: MainFieldProps)
     ];
     return (
             <Radios<MainDto>
+            name={`${firstName}-main`}
                 mainLabel="Main"
                 disabled={disabled}
                 value={value}

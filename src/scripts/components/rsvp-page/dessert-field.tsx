@@ -6,11 +6,12 @@ import { Radio, Radios } from "./radios";
 
 export interface DessertFieldProps {
     value: DessertDto;
+    firstName: string;
     disabled?: boolean;
     onChange: (value: DessertDto) => void;
 }
 
-export function DessertField({ value, onChange, disabled = false }: DessertFieldProps): JSX.Element {
+export function DessertField({ value, onChange, firstName, disabled = false }: DessertFieldProps): JSX.Element {
     const radios: Array<Radio<DessertDto>> = [
         {
             label: (<>Eton mess&nbsp;<FontAwesomeIcon className="vegetarian" icon={["fab", "vimeo-v"]} /></>),
@@ -23,6 +24,7 @@ export function DessertField({ value, onChange, disabled = false }: DessertField
     ];
     return (
         <Radios<DessertDto>
+            name={`${firstName}-dessert`}
             mainLabel="Dessert"
             disabled={disabled}
             radios={radios}

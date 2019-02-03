@@ -4,6 +4,7 @@ import { AgeDto, InviteTypeDto } from "../../utilities/service";
 import { AttendingFormModel } from "./attending-field";
 
 export interface DrinksPreferenceFieldsProps {
+    firstName: string;
     age: AgeDto;
     attending: AttendingFormModel;
     inviteType: InviteTypeDto;
@@ -17,6 +18,7 @@ export interface DrinksPreferenceFieldsProps {
 
 export function DrinksPreferenceFields(
     {
+        firstName,
         age,
         attending,
         inviteType,
@@ -37,6 +39,7 @@ export function DrinksPreferenceFields(
             <div className="guest-field-check-boxes">
                 <label className="checkbox-label">
                     <input
+                        name={`${firstName}-drinks-preference`}
                         type="checkbox"
                         checked={drinkPreferenceRed}
                         onChange={(e) => onDrinkPreferenceRedChange(e.target.checked)} />
@@ -44,6 +47,7 @@ export function DrinksPreferenceFields(
                 </label>
                 <label className="checkbox-label">
                     <input
+                        name={`${firstName}-drinks-preference`}
                         type="checkbox"
                         checked={drinkPreferenceWhite}
                         onChange={(e) => onDrinkPreferenceWhiteChange(e.target.checked)} />
@@ -51,6 +55,7 @@ export function DrinksPreferenceFields(
                 </label>
                 <label className="checkbox-label">
                     <input
+                        name={`${firstName}-drinks-preference`}
                         type="checkbox"
                         checked={drinkPreferenceRose}
                         onChange={(e) => onDrinkPreferenceRoseChange(e.target.checked)} />

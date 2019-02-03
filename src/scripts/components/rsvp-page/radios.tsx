@@ -6,12 +6,15 @@ export interface Radio<T extends string> {
 }
 
 export interface RadiosProps<T extends string> {
+    name: string;
     mainLabel: string;
     disabled?: boolean;
+    required?: boolean;
     value?: T;
     radios: Array<Radio<T>>;
     onChange: (value: T) => void;
 }
+
 export class Radios<T extends string> extends Component<RadiosProps<T>> {
     constructor(props: RadiosProps<T>) {
         super(props);
@@ -27,8 +30,10 @@ export class Radios<T extends string> extends Component<RadiosProps<T>> {
                         return (
                             <label key={value}>
                                 <input
+                                    name={this.props.name}
                                     type="radio"
                                     disabled={this.props.disabled === true}
+                                    required={this.props.required !== false}
                                     value={value}
                                     checked={this.props.value === value}
                                     onChange={this.handleChange} />

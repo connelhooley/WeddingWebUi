@@ -9,6 +9,7 @@ import { MainField, MainFormModel } from "./main-field";
 import { StarterField, StarterFormModel } from "./starter-field";
 
 export interface MealFieldsProps {
+    firstName: string;
     age: AgeFormModel;
     attending: AttendingFormModel;
     inviteType: InviteTypeFormModel;
@@ -24,6 +25,7 @@ export interface MealFieldsProps {
 
 export function MealFields(
     {
+        firstName,
         age,
         attending,
         inviteType,
@@ -83,14 +85,17 @@ export function MealFields(
                         </label>
                         <StarterField
                             value={starter}
+                            firstName={firstName}
                             disabled={isChildSetMenu}
                             onChange={onStarterChange} />
                         <MainField
                             value={main}
+                            firstName={firstName}
                             disabled={isChildSetMenu}
                             onChange={onMainChange} />
                         <DessertField
                             value={dessert}
+                            firstName={firstName}
                             disabled={isChildSetMenu}
                             onChange={onDessertChange} />
                     </div>

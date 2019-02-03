@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import image from "../../../images/corner-daisy-ds.png";
+
 interface INavState {
     isMobileMenuOpen: boolean;
 }
@@ -20,7 +22,10 @@ export class Nav extends Component<{}, INavState> {
             <header id="site-header">
                 <div id="site-title">
                     <Link id="site-title-link" to="/">
-                        Fowler Hooley Wedding
+                        <img id="site-title-link-img" src={image} />
+                        <div id="site-title-link-text">
+                            Fowler Hooley Wedding
+                        </div>
                     </Link>
                     <div id="site-nav-button-wrapper">
                         <button
@@ -36,7 +41,7 @@ export class Nav extends Component<{}, INavState> {
                         <span className="site-nav-item-text">Order of the day</span>
                     </Link>
                     <Link className="site-nav-item" to="/food-menu" >
-                        <span className="site-nav-item-text">Food Menu</span>
+                        <span className="site-nav-item-text">Food menu</span>
                     </Link>
                     <Link className="site-nav-item" to="/location" >
                         <span className="site-nav-item-text">Location</span>

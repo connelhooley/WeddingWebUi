@@ -12,6 +12,7 @@ export class Nav extends Component<{}, INavState> {
     constructor(props: {}) {
         super(props);
         this.handleMobileToggle = this.handleMobileToggle.bind(this);
+        this.handleMobileNavClickToggle = this.handleMobileNavClickToggle.bind(this);
         this.state = {
             isMobileMenuOpen: false,
         };
@@ -21,7 +22,7 @@ export class Nav extends Component<{}, INavState> {
         return (
             <header id="site-header">
                 <div id="site-title">
-                    <Link id="site-title-link" to="/">
+                    <Link onClick={this.handleMobileNavClickToggle} id="site-title-link" to="/">
                         <img id="site-title-link-img" src={siteTitleImg} />
                         <div id="site-title-link-text">
                             Fowler Hooley Wedding
@@ -37,13 +38,25 @@ export class Nav extends Component<{}, INavState> {
                     </div>
                 </div>
                 <nav id="site-nav" className={this.state.isMobileMenuOpen ? "site-nav-open" : ""}>
-                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/order-of-the-day" >
+                    <NavLink
+                        onClick={this.handleMobileNavClickToggle}
+                        className="site-nav-item"
+                        activeClassName="site-nav-item-active"
+                        to="/order-of-the-day" >
                         <span className="site-nav-item-text">Order of the day</span>
                     </NavLink>
-                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/food-menus" >
+                    <NavLink
+                        onClick={this.handleMobileNavClickToggle}
+                        className="site-nav-item"
+                        activeClassName="site-nav-item-active"
+                        to="/food-menus" >
                         <span className="site-nav-item-text">Food menu</span>
                     </NavLink>
-                    <NavLink className="site-nav-item" activeClassName="site-nav-item-active" to="/location" >
+                    <NavLink
+                        onClick={this.handleMobileNavClickToggle}
+                        className="site-nav-item"
+                        activeClassName="site-nav-item-active"
+                        to="/location" >
                         <span className="site-nav-item-text">Location</span>
                     </NavLink>
                 </nav>
@@ -55,5 +68,13 @@ export class Nav extends Component<{}, INavState> {
         this.setState({
             isMobileMenuOpen: !this.state.isMobileMenuOpen,
         });
+    }
+
+    private handleMobileNavClickToggle(): void {
+        if (this.state.isMobileMenuOpen) {
+            this.setState({
+                isMobileMenuOpen: false,
+            });
+        }
     }
 }

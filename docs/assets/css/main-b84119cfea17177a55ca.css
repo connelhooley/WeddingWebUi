@@ -341,10 +341,10 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row; }
-  @media (max-width: 767.98px) {
+  @media (max-width: 850px) {
     #site-header {
       display: block; } }
-  @media (max-width: 767.98px) {
+  @media (max-width: 850px) {
     #site-header #site-title {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -370,7 +370,7 @@ body {
       display: block;
       content: "";
       clear: both; }
-    @media (max-width: 767.98px) {
+    @media (max-width: 850px) {
       #site-header #site-title #site-title-link {
         font-size: 1.7rem; } }
     #site-header #site-title #site-title-link:active, #site-header #site-title #site-title-link:focus, #site-header #site-title #site-title-link:hover, #site-header #site-title #site-title-link:link, #site-header #site-title #site-title-link:visited {
@@ -379,7 +379,7 @@ body {
     #site-header #site-title #site-title-link #site-title-link-img {
       width: 60px;
       height: auto; }
-      @media (max-width: 767.98px) {
+      @media (max-width: 850px) {
         #site-header #site-title #site-title-link #site-title-link-img {
           display: none; } }
     #site-header #site-title #site-title-link #site-title-link-img,
@@ -387,7 +387,7 @@ body {
       float: left; }
   #site-header #site-title #site-nav-button-wrapper {
     display: none; }
-    @media (max-width: 767.98px) {
+    @media (max-width: 850px) {
       #site-header #site-title #site-nav-button-wrapper {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -408,7 +408,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
-    @media (max-width: 767.98px) {
+    @media (max-width: 850px) {
       #site-header #site-nav {
         display: none; } }
     #site-header #site-nav .site-nav-item {
@@ -419,15 +419,16 @@ body {
         text-decoration: none; }
     #site-header #site-nav .site-nav-item-active:active, #site-header #site-nav .site-nav-item-active:focus, #site-header #site-nav .site-nav-item-active:hover, #site-header #site-nav .site-nav-item-active:link, #site-header #site-nav .site-nav-item-active:visited {
       color: #ffcf58; }
-    #site-header #site-nav.site-nav-open {
-      display: block;
-      -webkit-box-orient: vertical;
-      -webkit-box-direction: normal;
-          -ms-flex-direction: column;
-              flex-direction: column; }
-      #site-header #site-nav.site-nav-open .site-nav-item {
+    @media (max-width: 850px) {
+      #site-header #site-nav.site-nav-open {
         display: block;
-        text-align: right; }
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column; }
+        #site-header #site-nav.site-nav-open .site-nav-item {
+          display: block;
+          text-align: right; } }
   #site-header #site-title #site-title-link #site-title-link-text,
   #site-header #site-title #site-nav-button-wrapper,
   #site-header #site-nav .site-nav-item {
@@ -670,7 +671,7 @@ body {
 #rsvp-form .guest-fields,
 #rsvp-form #rsvp-form-submit {
   padding: .5rem 1rem; }
-  @media (max-width: 767.98px) {
+  @media (max-width: 850px) {
     #rsvp-form .guest-header,
     #rsvp-form .guest-fields,
     #rsvp-form #rsvp-form-submit {
@@ -716,7 +717,7 @@ body {
   margin: 0 auto;
   font-size: 1.2rem;
   text-align: center; }
-  @media (max-width: 767.98px) {
+  @media (max-width: 850px) {
     #food-menus-page {
       text-align: left; } }
   #food-menus-page h1,
@@ -738,7 +739,7 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
-    @media (max-width: 767.98px) {
+    @media (max-width: 850px) {
       #food-menus-page #wedding-breakfast-menus {
         display: block; } }
     #food-menus-page #wedding-breakfast-menus #food-menu-adult {
@@ -749,7 +750,7 @@ body {
       -webkit-box-flex: 0;
           -ms-flex: 0;
               flex: 0; }
-      @media (max-width: 767.98px) {
+      @media (max-width: 850px) {
         #food-menus-page #wedding-breakfast-menus #food-menu-separator {
           display: none; } }
       #food-menus-page #wedding-breakfast-menus #food-menu-separator img {

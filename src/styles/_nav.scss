@@ -91,11 +91,13 @@
             }
         }
         &.site-nav-open {
-            display: block;
-            flex-direction: column;
-            .site-nav-item {
+            @include mobile-only {
                 display: block;
-                text-align: right;
+                flex-direction: column;
+                .site-nav-item {
+                    display: block;
+                    text-align: right;
+                }
             }
         }
     }

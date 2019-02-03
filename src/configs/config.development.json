@@ -1,0 +1,6 @@
+{
+    "serviceBaseUrl": "http://localhost:7071",
+    "serviceGetInviteToken": "",
+    "serviceSendRsvpToken": "",
+    "serviceValidateInviteIdToken": ""
+}

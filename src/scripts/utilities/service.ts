@@ -13,7 +13,7 @@ export async function getInvite(inviteId: string): Promise<InviteDto> {
 }
 
 export async function validateInviteId(inviteId: string): Promise<boolean> {
-    const {serviceBaseUrl, serviceValidateInviteIdToken} = getConfig();
+    const {serviceBaseUrl, serviceValidateInviteIdToken} =  getConfig();
     const url = `${serviceBaseUrl}/api/invite-id?inviteId=${inviteId}&code=${serviceValidateInviteIdToken}`;
     const method = "GET";
     const res = await  fetch(new Request(url, { method }));
@@ -21,7 +21,7 @@ export async function validateInviteId(inviteId: string): Promise<boolean> {
 }
 
 export async function sendRsvp(rsvp: RsvpDto): Promise<void>  {
-    const {serviceBaseUrl, serviceSendRsvpToken} = getConfig();
+    const {serviceBaseUrl, serviceSendRsvpToken} =  getConfig();
     const url = `${serviceBaseUrl}/api/invite?code=${serviceSendRsvpToken}`;
     const method = "PUT";
     const body = JSON.stringify(rsvp);

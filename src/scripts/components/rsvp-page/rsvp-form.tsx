@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Component } from "react";
+import React, { Component, FormEvent } from "react";
 import { Link } from "react-router-dom";
 
 import { getInviteId } from "../../utilities/local-storage";
@@ -92,7 +92,8 @@ export class RsvpForm extends Component<{}, RsvpFormState> {
         });
     }
 
-    public async handleSubmit(): Promise<void> {
+    public async handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
+        event.preventDefault();
         this.setState({
             saving: true,
         });

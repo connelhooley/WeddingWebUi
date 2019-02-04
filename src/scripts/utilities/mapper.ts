@@ -3,7 +3,7 @@ import { AgeFormModel, GuestRsvpFormModel } from "../components/rsvp-page/guest-
 import { MainFormModel } from "../components/rsvp-page/main-field";
 import { RsvpFormModel } from "../components/rsvp-page/rsvp-form";
 import { StarterFormModel } from "../components/rsvp-page/starter-field";
-import { DessertDto, InviteDto, InviteGuestDto, MainDto, RsvpDto, StarterDto } from "./service";
+import { DessertDto, InviteDto, InviteGuestDto, MainDto, RsvpDto, StarterDto, RsvpGuestDto } from "./service";
 
 export function mapDto(invite: InviteDto): RsvpFormModel  {
     const mapIsChildSetMenu = (g: InviteGuestDto): boolean =>
@@ -12,13 +12,13 @@ export function mapDto(invite: InviteDto): RsvpFormModel  {
         g.dessert === "ChildSetMenu";
 
     const mapStarter = (g: InviteGuestDto): StarterFormModel =>
-        g.starter === "ChildSetMenu" ? undefined : g.starter;
+        g.starter === "ChildSetMenu" ? null : g.starter;
 
     const mapMain = (g: InviteGuestDto): MainFormModel =>
-        g.main === "ChildSetMenu" ? undefined : g.main;
+        g.main === "ChildSetMenu" ? null : g.main;
 
     const mapDessert = (g: InviteGuestDto): DessertFormModel =>
-        g.dessert === "ChildSetMenu" ? undefined : g.dessert;
+        g.dessert === "ChildSetMenu" ? null : g.dessert;
 
     return {
         guests: invite.guests
@@ -68,22 +68,24 @@ export function mapForm(form: RsvpFormModel): RsvpDto  {
     const mapDessert = (g: GuestRsvpFormModel): DessertDto =>
         g.isChildSetMenu  ? "ChildSetMenu" : g.dessert;
 
-    const mapDrinkPreferenceRed = (g: GuestRsvpFormModel): boolean =>
-        g.drinkPreferenceRed === null || g.drinkPreferenceRed === undefined
-            ? false
-            : g.drinkPreferenceRed;
-
-    const mapDrinkPreferenceWhite = (g: GuestRsvpFormModel): boolean =>
-        g.drinkPreferenceWhite === null || g.drinkPreferenceWhite === undefined
-            ? false
-            : g.drinkPreferenceWhite;
-
-    const mapDrinkPreferenceRose = (g: GuestRsvpFormModel): boolean =>
-        g.drinkPreferenceRose === null || g.drinkPreferenceRose === undefined
-            ? false
-            : g.drinkPreferenceRose;
-    return {
-        rsvps: form.guests.map((g) => ({
+    const mapGuest = (g: GuestRsvpFormModel): RsvpGuestDto => {
+        if (g.attending === "NotAttending") {
+            return {
+                inviteId: g.inviteId,
+                firstName: g.firstName,
+                attending: g.attending,
+            };
+        }
+        if (g.attending === "Evening") {
+            return {
+                inviteId: g.inviteId,
+                firstName: g.firstName,
+                attending: g.attending,
+                dietaryRequirements: g.dietaryRequirements,
+                songRequest: g.songRequest,
+            };
+        }
+        return {
             inviteId: g.inviteId,
             firstName: g.firstName,
             attending: g.attending,
@@ -91,10 +93,14 @@ export function mapForm(form: RsvpFormModel): RsvpDto  {
             main: mapMain(g),
             dessert: mapDessert(g),
             dietaryRequirements: g.dietaryRequirements,
-            drinkPreferenceRed: mapDrinkPreferenceRed(g),
-            drinkPreferenceWhite: mapDrinkPreferenceWhite(g),
-            drinkPreferenceRose: mapDrinkPreferenceRose(g),
+            drinkPreferenceRed: g.drinkPreferenceRed,
+            drinkPreferenceWhite: g.drinkPreferenceWhite,
+            drinkPreferenceRose: g.drinkPreferenceRose,
             songRequest: g.songRequest,
-        })),
+        };
+    };
+
+    return {
+        rsvps: form.guests.map(mapGuest),
     };
 }

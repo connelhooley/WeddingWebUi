@@ -61,14 +61,14 @@ export interface RsvpGuestDto {
     inviteId: string;
     firstName: string;
     attending: AttendingDto;
-    starter: StarterDto;
-    main: MainDto;
-    dessert: DessertDto;
-    dietaryRequirements: string;
+    starter?: StarterDto;
+    main?: MainDto;
+    dessert?: DessertDto;
+    dietaryRequirements?: string;
     drinkPreferenceRed?: boolean;
     drinkPreferenceWhite?: boolean;
     drinkPreferenceRose?: boolean;
-    songRequest: string;
+    songRequest?: string;
 }
 
 export type InviteTypeDto = "Day" | "Evening";

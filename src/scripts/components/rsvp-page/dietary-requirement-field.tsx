@@ -13,8 +13,6 @@ export interface DietaryRequirementFieldProps {
 export function DietaryRequirementField(
     { age, attending, value, onChange }: DietaryRequirementFieldProps,
 ): JSX.Element {
-    // tslint:disable-next-line:no-console
-    console.dir(attending);
     if (attending === null || attending === "NotAttending" || age === "Infant") {
         return <></>;
     }

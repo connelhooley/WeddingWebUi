@@ -16,7 +16,7 @@ export async function validateInviteId(inviteId: string): Promise<boolean> {
     const {serviceBaseUrl, serviceValidateInviteIdToken} =  getConfig();
     const url = `${serviceBaseUrl}/api/invite-id?inviteId=${inviteId}&code=${serviceValidateInviteIdToken}`;
     const method = "GET";
-    const res = await  fetch(new Request(url, { method }));
+    const res = await fetch(new Request(url, { method }));
     return res.ok && JSON.parse(await res.json());
 }
 

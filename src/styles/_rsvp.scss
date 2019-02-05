@@ -1,6 +1,10 @@
 #rsvp-page {
     margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+#rsvp-form-errored {
+    color: #b72121;
 }
 
 #rsvp-form-loading {
@@ -10,6 +14,7 @@
     text-align: center;
 }
 
+#rsvp-form-errored,
 #rsvp-form-finished {
     text-transform: uppercase;
     text-align: center;
@@ -33,6 +38,7 @@
 }
 
 #rsvp-form,
+#rsvp-form-errored,
 #rsvp-form-finished {
     max-width: 800px;
     margin-left: auto;
@@ -212,6 +218,10 @@
     .guest-separator {
         width: 100%;
         height: auto;
+    }
+    #rsvp-form-error {
+        color: #b72121;
+        margin: 1rem 0;
     }
     .guest-header,
     .guest-fields,

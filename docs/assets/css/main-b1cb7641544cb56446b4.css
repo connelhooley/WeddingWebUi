@@ -504,7 +504,10 @@ body {
 
 #rsvp-page {
   margin-top: 1rem;
-  margin-bottom: 1rem; }
+  margin-bottom: 3rem; }
+
+#rsvp-form-errored {
+  color: #b72121; }
 
 #rsvp-form-loading {
   font-size: 4rem;
@@ -512,19 +515,28 @@ body {
   padding: 2rem;
   text-align: center; }
 
+#rsvp-form-errored,
 #rsvp-form-finished {
   text-transform: uppercase;
   text-align: center;
   font-size: 2rem; }
-  #rsvp-form-finished a:active, #rsvp-form-finished a:focus, #rsvp-form-finished a:hover, #rsvp-form-finished a:link, #rsvp-form-finished a:visited {
+  #rsvp-form-errored a:active, #rsvp-form-errored a:focus, #rsvp-form-errored a:hover, #rsvp-form-errored a:link, #rsvp-form-errored a:visited,
+  #rsvp-form-finished a:active,
+  #rsvp-form-finished a:focus,
+  #rsvp-form-finished a:hover,
+  #rsvp-form-finished a:link,
+  #rsvp-form-finished a:visited {
     color: #ffc025; }
+  #rsvp-form-errored a:hover,
   #rsvp-form-finished a:hover {
     color: #ffcf58; }
+  #rsvp-form-errored img,
   #rsvp-form-finished img {
     width: 100%;
     height: auto; }
 
 #rsvp-form,
+#rsvp-form-errored,
 #rsvp-form-finished {
   max-width: 800px;
   margin-left: auto;
@@ -666,6 +678,10 @@ body {
 #rsvp-form .guest-separator {
   width: 100%;
   height: auto; }
+
+#rsvp-form #rsvp-form-error {
+  color: #b72121;
+  margin: 1rem 0; }
 
 #rsvp-form .guest-header,
 #rsvp-form .guest-fields,

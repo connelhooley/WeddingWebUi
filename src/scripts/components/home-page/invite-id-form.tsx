@@ -10,6 +10,7 @@ interface InviteIdFormState {
     failed: boolean;
     saving: boolean;
     saved: boolean;
+    errored: boolean;
 }
 
 export class InviteIdForm extends Component<{}, InviteIdFormState> {
@@ -22,6 +23,7 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
             failed: false,
             saving: false,
             saved: false,
+            errored: false,
         };
     }
 
@@ -45,6 +47,10 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
                     </header>
                     <div hidden={!this.state.failed} id="invite-id-error">
                         Sorry, we couldn't find that RSVP code<br />
+                        Please try again
+                    </div>
+                    <div hidden={!this.state.errored} id="invite-id-error">
+                        Sorry, there was a problem sending your request<br />
                         Please try again
                     </div>
                     <input
@@ -78,21 +84,33 @@ export class InviteIdForm extends Component<{}, InviteIdFormState> {
             failed: false,
             saving: true,
             saved: false,
+            errored: false,
         });
         const inviteId = this.state.inviteId.replace(/\s/, "").toLocaleUpperCase();
-        const isValid = await validateInviteId(inviteId);
-        if (isValid) {
-            storeInviteId(inviteId);
+        try {
+            const isValid = await validateInviteId(inviteId);
+            if (isValid) {
+                storeInviteId(inviteId);
+                this.setState({
+                    failed: false,
+                    saving: false,
+                    saved: true,
+                    errored: false,
+                });
+            } else {
+                this.setState({
+                    failed: true,
+                    saving: false,
+                    saved: false,
+                    errored: false,
+                });
+            }
+        } catch {
             this.setState({
                 failed: false,
                 saving: false,
-                saved: true,
-            });
-        } else {
-            this.setState({
-                failed: true,
-                saving: false,
                 saved: false,
+                errored: true,
             });
         }
     }

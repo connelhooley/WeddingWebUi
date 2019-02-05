@@ -99,6 +99,9 @@ export default function(env: "development" | "production"): Configuration {
             new WebappWebpackPlugin({
                 logo: "./src/images/corner-daisy-ds.png",
                 prefix: "assets/images",
+                favicons: {
+                    appName: "Fowler Hooley Wedding",
+                },
             }),
             new HtmlWebpackPlugin({
                 filename: "index.html",

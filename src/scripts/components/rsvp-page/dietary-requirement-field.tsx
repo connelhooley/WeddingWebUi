@@ -19,7 +19,7 @@ export function DietaryRequirementField(
     return (
         <div className="guest-field">
             <label>
-                Dietary requirements
+                Dietary requirements <span className="hint small">(if required)</span>
                 <input
                     type="text"
                     maxLength={280}

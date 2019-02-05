@@ -17,7 +17,7 @@ export function SongRequestField({ age, attending, value, onChange }: SongReques
     return (
         <div className="guest-field">
             <label>
-                Song request
+                Song request <span className="hint small">(optional)</span>
                 <input
                     type="text"
                     maxLength={280}

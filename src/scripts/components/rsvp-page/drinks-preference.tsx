@@ -35,7 +35,7 @@ export function DrinksPreferenceFields(
     }
     return (
         <div className="guest-field">
-            <label>Drinks preference</label>
+            <label>Drinks preference <span className="hint small">(optional)</span></label>
             <div className="guest-field-check-boxes">
                 <label className="checkbox-label">
                     <input

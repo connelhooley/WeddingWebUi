@@ -1,8 +1,13 @@
+// tslint:disable-next-line:no-reference
+/// <reference path="./src/scripts/types/webpack.d.ts" />
+
 import autoprefixer from "autoprefixer";
 import CleanWebpackPlugin from "clean-webpack-plugin";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import WebappWebpackPlugin from "webapp-webpack-plugin";
+
 import path from "path";
 import { Configuration, NormalModuleReplacementPlugin, ProvidePlugin } from "webpack";
 
@@ -91,6 +96,10 @@ export default function(env: "development" | "production"): Configuration {
             publicPath: "/",
         },
         plugins: [
+            new WebappWebpackPlugin({
+                logo: "./src/images/corner-daisy-ds.png",
+                prefix: "assets/images",
+            }),
             new HtmlWebpackPlugin({
                 filename: "index.html",
                 minify: false,

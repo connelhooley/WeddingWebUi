@@ -579,7 +579,7 @@ body {
       #rsvp-form .guest-fields .guest-field input[type=text]:focus {
         border: 1px solid #ffcf58; }
   #rsvp-form .guest-fields .small {
-    font-size: .9rem; }
+    font-size: .8em; }
   #rsvp-form .guest-fields .hint {
     color: #8e8e8e; }
     #rsvp-form .guest-fields .hint a:active, #rsvp-form .guest-fields .hint a:focus, #rsvp-form .guest-fields .hint a:hover, #rsvp-form .guest-fields .hint a:link, #rsvp-form .guest-fields .hint a:visited {

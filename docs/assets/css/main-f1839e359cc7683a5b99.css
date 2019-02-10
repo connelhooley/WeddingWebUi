@@ -730,6 +730,8 @@ body {
   #location-page img {
     width: 100%;
     height: auto; }
+  #location-page #google-map {
+    height: 400px; }
 
 #food-menu-page {
   margin: 0 auto;

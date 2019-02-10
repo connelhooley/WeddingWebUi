@@ -3,7 +3,7 @@ import { AgeFormModel, GuestRsvpFormModel } from "../components/rsvp-page/guest-
 import { MainFormModel } from "../components/rsvp-page/main-field";
 import { RsvpFormModel } from "../components/rsvp-page/rsvp-form";
 import { StarterFormModel } from "../components/rsvp-page/starter-field";
-import { DessertDto, InviteDto, InviteGuestDto, MainDto, RsvpDto, StarterDto, RsvpGuestDto } from "./service";
+import { DessertDto, InviteDto, InviteGuestDto, MainDto, RsvpDto, RsvpGuestDto, StarterDto } from "./service";
 
 export function mapDto(invite: InviteDto): RsvpFormModel  {
     const mapIsChildSetMenu = (g: InviteGuestDto): boolean =>

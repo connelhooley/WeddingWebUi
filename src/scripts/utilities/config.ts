@@ -5,6 +5,7 @@ export interface Config {
     serviceGetInviteToken: string;
     serviceSendRsvpToken: string;
     serviceValidateInviteIdToken: string;
+    googleMapsApiKey: string;
 }
 
 export function getConfig(): Config {

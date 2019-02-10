@@ -2,5 +2,6 @@
     "serviceBaseUrl": "http://localhost:7071",
     "serviceGetInviteToken": "",
     "serviceSendRsvpToken": "",
-    "serviceValidateInviteIdToken": ""
+    "serviceValidateInviteIdToken": "",
+    "googleMapsApiKey": "AIzaSyBFphvxhGJDbj4xDZVda9bGDh0BvRmoqwY"
 }

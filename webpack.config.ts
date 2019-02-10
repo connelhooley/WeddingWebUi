@@ -1,4 +1,5 @@
-// tslint:disable-next-line:no-reference
+// tslint:disable:no-empty
+// tslint:disable:no-reference
 /// <reference path="./src/scripts/types/webpack.d.ts" />
 
 import autoprefixer from "autoprefixer";
@@ -120,7 +121,7 @@ export default function(env: "development" | "production"): Configuration {
             new MiniCssExtractPlugin({
                 filename: "assets/css/[name]-[hash].css",
             }),
-            new CleanWebpackPlugin("./docs"),
+            env === "production" ? new CleanWebpackPlugin("./docs") : () => {},
             new CopyWebpackPlugin([
                 {
                     from: "./src/CNAME",

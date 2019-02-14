@@ -18,6 +18,7 @@ export function FoodMenuPage(): JSX.Element {
                     <h3>Starter</h3>
                     <p>Prawn cocktail served with Marie Rose sauce&nbsp;<Pescetarian /></p>
                     <p>Mini asparagus wrapped with Parma ham</p>
+                    <p>Asparagus in goat's cheese tart, accompanied with balsamic dressing<Vegetarian /></p>
 
                     <h3>Main Course</h3>
                     <p>Beer battered cod served with lemon wedge, hand cut chips &amp; peas&nbsp;<Pescetarian /></p>

@@ -14,6 +14,10 @@ export interface DessertFieldProps {
 export function DessertField({ value, onChange, firstName, disabled = false }: DessertFieldProps): JSX.Element {
     const radios: Array<Radio<DessertDto>> = [
         {
+            label: "None",
+            value: "None",
+        },
+        {
             label: (<>Eton mess&nbsp;<Vegetarian /></>),
             value: "EtonMess",
         },
@@ -33,4 +37,4 @@ export function DessertField({ value, onChange, firstName, disabled = false }: D
     );
 }
 
-export type DessertFormModel = "EtonMess" | "ChocolateBrownie";
+export type DessertFormModel = "EtonMess" | "ChocolateBrownie" | "None";

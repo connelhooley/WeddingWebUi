@@ -65,7 +65,7 @@ export function MealFields(
         <>
             <div className="guest-field">
                 <label className="hint">
-                    You can order either from the adult menu, or you can order the child set menu.
+                    You can order from the adult menu <b>or</b> the child set menu.
                     Click <Link to="/food-menu" target="_BLANK">here&nbsp;
                     <FontAwesomeIcon icon="external-link-alt"/></Link> to see the menus in full.
                 </label>

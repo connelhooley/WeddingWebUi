@@ -9,6 +9,9 @@
         margin: 0 auto;
         text-align: left;
         font-size: 1.5rem;
+        @include mobile-only {
+            font-size: 1.2rem;
+        }
         td {
             padding-bottom: 1rem;
         }

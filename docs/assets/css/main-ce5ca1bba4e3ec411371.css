@@ -735,6 +735,9 @@ a:hover {
     margin: 0 auto;
     text-align: left;
     font-size: 1.5rem; }
+    @media (max-width: 850px) {
+      #order-of-the-day-page table {
+        font-size: 1.2rem; } }
     #order-of-the-day-page table td {
       padding-bottom: 1rem; }
   #order-of-the-day-page .time {

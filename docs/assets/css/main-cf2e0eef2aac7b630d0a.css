@@ -317,6 +317,12 @@ template {
 body {
   font-family: "Noto Serif SC", serif; }
 
+a, a:link, a:visited, a:active {
+  color: #ffb90c; }
+
+a:hover {
+  color: #d89a00; }
+
 #site-content {
   padding: 0 1rem; }
 
@@ -727,11 +733,26 @@ body {
 
 #location-page {
   text-align: center; }
+  #location-page #location-map {
+    max-width: 900px;
+    margin: 0 auto; }
   #location-page img {
     width: 100%;
     height: auto; }
   #location-page #google-map {
     height: 400px; }
+  #location-page .location-list {
+    margin-bottom: 3rem; }
+    #location-page .location-list .location-list-item {
+      margin-bottom: 2rem; }
+      #location-page .location-list .location-list-item .title {
+        font-size: 1.4rem; }
+      #location-page .location-list .location-list-item .title,
+      #location-page .location-list .location-list-item .address,
+      #location-page .location-list .location-list-item .distance,
+      #location-page .location-list .location-list-item .telephone,
+      #location-page .location-list .location-list-item .website {
+        margin-bottom: .5rem; }
 
 #food-menu-page {
   margin: 0 auto;

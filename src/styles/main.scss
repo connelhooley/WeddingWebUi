@@ -32,6 +32,18 @@ body {
     font-family: $body-font-family;
 }
 
+a {
+    &,
+    &:link,
+    &:visited,
+    &:active {
+        color: darken($primary-color, 15%);
+    }
+    &:hover {
+        color: darken($primary-color, 25%);
+    }
+}
+
 #site-content {
     padding: 0 1rem;
 }

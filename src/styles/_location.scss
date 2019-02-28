@@ -1,10 +1,30 @@
 #location-page {
     text-align: center;
+    #location-map {
+        max-width: 900px;
+        margin: 0 auto;
+    }
     img {
         width: 100%;
         height: auto;
     }
     #google-map {
         height: 400px;
+    }
+    .location-list {
+        margin-bottom: 3rem;
+        .location-list-item {
+            margin-bottom: 2rem;
+            .title {
+                font-size: 1.4rem;
+            }
+            .title,
+            .address,
+            .distance,
+            .telephone,
+            .website {
+                margin-bottom: .5rem;
+            }
+        }
     }
 }

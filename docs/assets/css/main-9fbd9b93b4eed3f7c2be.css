@@ -730,6 +730,16 @@ a:hover {
   #order-of-the-day-page img {
     width: 100%;
     height: auto; }
+  #order-of-the-day-page table {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 1.5rem; }
+    #order-of-the-day-page table td {
+      padding-bottom: 1rem; }
+  #order-of-the-day-page .time {
+    font-weight: bold;
+    padding-right: 2rem; }
 
 #location-page {
   text-align: center; }

@@ -4,4 +4,17 @@
         width: 100%;
         height: auto;
     }
+    table {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: left;
+        font-size: 1.5rem;
+        td {
+            padding-bottom: 1rem;
+        }
+    }
+    .time {
+        font-weight: bold;
+        padding-right: 2rem;
+    }
 }
